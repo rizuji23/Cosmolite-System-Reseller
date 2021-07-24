@@ -1,0 +1,15 @@
+<form action="{% url 'webcosmoapp:changekategori' %}" method="POST">
+    <div class="modal-body">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{ kategori.id_kategori }}">
+        <div class="form-group">
+            <label for="">Kategori</label>
+            <input type="text" value="{{ kategori.kategori }}" id="kategoriedit" class="form-control" required
+                name="kategori">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Edit</button>
+    </div>
+</form>

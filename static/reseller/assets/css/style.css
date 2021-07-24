@@ -1,0 +1,3067 @@
+@font-face {
+    font-family: 'Monserrat Reguler';
+    src: url('../fonts/Montserrat-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Monserrat Bold';
+    src: url('../fonts/Montserrat-Bold.ttf');
+}
+
+:root {
+    --white: #fff;
+    --blue: #EDAE37;
+    --black: #707070;
+    --grey: #EBEBEB;
+    --deep-grey: #e5e5e5;
+    --red: #FB4242;
+}
+
+body {
+    background-color: var(--deep-grey);
+    scroll-behavior: smooth;
+    font-family: 'Monserrat Reguler';
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+#navbar {
+    transition: 0.3s;
+}
+
+.container-custom {
+    width: 100%;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    height: auto;
+    position: relative;
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+    background-color: var(--grey);
+}
+
+.section-1 {
+    background-color: var(--blue);
+    width: 100%;
+    height: auto;
+}
+
+.section-1-main {
+    padding: 0px 40px 100px 40px;
+}
+
+.section-1-icon ul {
+    margin: 0px;
+}
+
+.section-1-icon ul li {
+    list-style: none;
+    display: inline;
+}
+
+.box-search {
+    background-image: url(../img/Icons/Mask\ Group\ 6.png);
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: left;
+    background-position: 10px;
+    text-indent: 30px;
+    font-family: 'Monserrat Bold';
+    font-size: 0.9em;
+    border-radius: 5px;
+    color: var(--black);
+    padding: 10px;
+    border: 1px transparent;
+    width: 100%;
+}
+
+.section-1-content {
+    width: 100%;
+    padding: 30px 0px 30px 0px;
+}
+
+.section-1-content h1 {
+    font-family: 'Monserrat Bold';
+    color: var(--white);
+    font-size: 1.6em;
+}
+
+.section-1-content p {
+    font-family: 'Monserrat reguler';
+    color: var(--white);
+    font-size: 1em;
+}
+
+.section-2 {
+    width: 100%;
+    height: auto;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    box-shadow: 0px 0px 7px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    background-color: var(--white);
+}
+
+.section-2-main {
+    padding: 200px 40px 40px 40px;
+}
+
+.box-komisi {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+}
+
+.box-komisi-main {
+    padding: 20px;
+    box-shadow: 0px 0px 7px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+.box-komisi-content {
+    padding: 0px 20px;
+}
+
+.box-komisi-content h1 {
+    font-family: 'Monserrat Bold';
+    color: var(--black);
+    font-size: 1.2em;
+}
+
+.section-2-fitur {
+    width: 100%;
+    height: auto;
+}
+
+.section-2-fitur-main {
+    padding: 50px 0px;
+}
+
+.dot-fitur {
+    width: 80px;
+    height: 80px;
+    background-color: var(--white);
+    box-shadow: 0px 0px 7px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    transition: 0.7s, transform 0.7s;
+}
+
+.dot-fitur img {
+    width: 50%;
+}
+
+.dot-fitur:hover {
+    transform: scale(1.1);
+}
+
+.fitur-name h1 {
+    font-size: 1em;
+    padding-top: 10px;
+    color: var(--black);
+}
+
+.banner-slide {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    left: 0px;
+}
+
+.banner-slide-main {
+    max-width: 600px;
+    height: 200px;
+    background-color: var(--white);
+    box-shadow: 0px 0px 7px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    margin: auto;
+}
+
+.banner-slide-main img {
+    border-radius: 20px;
+}
+
+.navbar-box {
+    padding: 20px 40px 0px 40px;
+}
+
+.navbar {
+    background-color: var(--black);
+    width: 100%;
+}
+
+.navbar .navbar-toggler {
+    border-color: transparent;
+}
+
+.navbar-dark {
+    background-color: var(--blue);
+}
+
+.section-3 {
+    width: 100%;
+    height: auto;
+    background-color: var(--grey);
+}
+
+.section-3-main {
+    padding: 20px 20px 20px 20px;
+}
+
+.section-3-header h1 {
+    font-family: 'Monserrat Bold';
+    color: var(--black);
+    font-size: 1.2em;
+}
+
+.section-3-header {
+    padding: 50px 40px 40px 40px;
+}
+
+.btn-promo {
+    color: var(--white);
+    background-color: var(--red);
+    padding: 5px 20px 5px 20px;
+    border-radius: 20px;
+    font-size: 1em;
+}
+
+.btn-promo:hover {
+    color: var(--red);
+    background-color: var(--white);
+    border: 1px solid var(--red);
+}
+
+.section-3-content {
+    padding: 0px 40px;
+}
+
+.card-img-top,
+.card-promo,
+.card-cp {
+    border-radius: 20px;
+}
+
+.card-cp {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.card-promo {
+    position: relative;
+}
+
+.card-promo-content {
+    padding: 20px;
+}
+
+.card-promo-name {
+    position: absolute;
+    background-color: var(--white);
+    box-shadow: 0px 0px 7px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+    width: 85%;
+    margin: 20px;
+    bottom: 0px;
+}
+
+.card-promo-name h1 {
+    color: var(--black);
+    margin: 0px;
+    font-family: 'Monserrat Reguler';
+    font-size: 1em;
+}
+
+.card-promo-box {
+    padding: 0px 10px 40px 10px;
+}
+
+.btn-selebihnya {
+    font-family: 'Monserrat Bold';
+    font-size: 1.5em;
+    color: var(--black);
+    background-color: var(--white);
+    border-radius: 20px;
+    padding: 15px;
+    border: 1px solid var(--black);
+}
+
+
+.btn-selebihnya:hover {
+    color: var(--white);
+    background-color: var(--black);
+}
+
+.section-4 {
+    width: 100%;
+    height: auto;
+}
+
+.section-4-main {
+    padding: 50px 20px 20px 20px;
+}
+
+.banner-info {
+    width: 100%;
+    height: auto;
+    padding: 20px 35px 20px 35px;
+}
+
+.banner-info-main {
+    width: 100%;
+    height: 200px;
+    background-color: var(--white);
+    box-shadow: 0px 0px 7px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+.banner-info-main img {
+    border-radius: 20px;
+    width: 100%;
+}
+
+.section-5 {
+    width: 100%;
+    height: auto;
+}
+
+.section-5-main {
+    padding: 20px 50px 20px 50px;
+}
+
+.section-5-main h1 {
+    font-family: 'Monserrat Bold';
+    color: var(--black);
+    font-size: 2em;
+}
+
+.section-5-main p {
+    font-family: 'Monserrat Reguler';
+    color: var(--black);
+    font-size: 1em;
+}
+
+.btn-baca {
+    font-family: 'Monserrat Bold';
+    color: var(--black);
+    font-size: 1.5em;
+}
+
+.btn-baca:hover {
+    color: var(--blue);
+}
+
+.section-6 {
+    width: 100%;
+    height: auto;
+}
+
+.section-6-main {
+    padding: 30px 50px 20px 50px;
+}
+
+.btn-b-indo {
+    color: var(--white);
+    background-color: var(--red);
+    border-radius: 7px;
+    box-shadow: 0px 0px 7px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-b-ing {
+    color: var(--black);
+    background-color: var(--white);
+    border-radius: 7px;
+    box-shadow: 0px 0px 7px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-b-indo,
+.btn-b-ing {
+    padding: 3px 20px 3px 20px;
+    font-family: 'Monserrat Reguler';
+    font-size: 0.8em;
+}
+
+.btn-b-indo:hover {
+    text-decoration: none;
+    background-color: var(--white);
+    color: var(--red);
+    border: 1px solid var(--red);
+}
+
+.btn-b-ing:hover {
+    text-decoration: none;
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.foother {
+    padding: 10px 0px 120px 0px;
+}
+
+.foother p {
+    font-family: 'Monserrat Reguler';
+    color: var(--black);
+    font-size: 0.8em;
+}
+
+.navbar-bottom {
+    width: 100%;
+    height: auto;
+    position: fixed;
+    z-index: 9999;
+    bottom: 20px;
+    left: 0;
+    padding: 0px 40px;
+}
+
+.navbar-bottom-box {
+    max-width: 600px;
+    height: auto;
+    background-color: var(--white);
+    margin: auto;
+    border-radius: 25px;
+    box-shadow: 0px 0px 7px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-bottom-content {
+    padding: 15px 20px 10px 20px;
+}
+
+.navbar-bottom-content img {
+    width: 40px;
+    transition: 0.7s, transform 0.7s;
+}
+
+.navbar-bottom-content img:hover {
+    transform: scale(1.1);
+}
+
+.navbar-bottom-content p {
+    font-family: 'Monserrat Reguler';
+    color: var(--black);
+    font-size: 0.9em;
+}
+
+.navbar-cari-produk {
+    background-color: var(--white);
+    box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.1);
+    padding: 30px 65px !important;
+}
+
+.box-search-cari-produk {
+    background-image: url(../img/Icons/Mask\ Group\ 6.png);
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: left;
+    background-position: 10px;
+    text-indent: 30px;
+    font-family: 'Monserrat Bold';
+    font-size: 0.9em;
+    border-radius: 5px;
+    color: var(--black);
+    background-color: var(--grey);
+    padding: 10px;
+    border: 1px transparent;
+    width: 100%;
+}
+
+.nav-header-icon ul {
+    list-style: none;
+    display: inline;
+    margin: 10px;
+}
+
+.section-1-cari-produk {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+    margin: 20px 0px 0px 0px;
+}
+
+.section-1-cari-produk-main {
+    padding: 20px 40px 120px 40px;
+}
+
+.cari-produk-header {
+    width: 100%;
+    height: auto;
+    padding: 20px 0px;
+}
+
+.cari-produk-header h1 {
+    font-family: 'Monserrat Bold';
+    color: var(--black);
+    font-size: 0.95em;
+    margin-bottom: 0px;
+}
+
+.cari-produk-header a {
+    padding: 7px 25px;
+}
+
+.cari-produk-header ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.cari-produk-header li {
+    display: inline-block;
+    cursor: pointer;
+    background-color: var(--white);
+    border: 2px solid var(--grey);
+    border-radius: 7px;
+    margin: 0px 20px;
+}
+
+.cari-produk-main {
+    padding: 20px 0px 0px 0px;
+}
+
+.card-cp-box {
+    padding: 0px 10px 40px 10px;
+}
+
+.card-cp-box a {
+    text-decoration: none;
+}
+
+.card-body img {
+    padding-right: 5px;
+}
+
+.card-body h5 {
+    font-family: 'Monserrat Reguler';
+    color: var(--black);
+    margin-bottom: 10px;
+    font-size: 1.15em;
+}
+
+.card-body span {
+    font-family: 'Monserrat Reguler';
+    color: var(--black);
+}
+
+.card-body strong {
+    color: var(--black);
+    font-family: 'Monserrat Bold';
+}
+
+.card-body h1 {
+    font-family: 'Monserrat Bold';
+    font-size: 1.2em;
+    color: var(--black);
+    margin: 10px 0px;
+}
+
+.card-cp .card-img-top {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.navbar img {
+    width: 30px;
+    margin-right: 15px;
+}
+
+.nav-header-icon img {
+    width: 40px;
+}
+
+.navbar h1 {
+    font-family: 'Monserrat Bold';
+    font-size: 1.4em;
+    color: var(--black);
+    margin: 0px;
+    padding-left: 20px;
+}
+
+.section-1-dp {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+    margin: 20px 0px 0px 0px;
+}
+
+.section-1-dp-main {
+    padding: 30px 30px 0px 30px;
+}
+
+.dp-header {
+    width: 100%;
+    height: auto;
+    padding: 20px 0px;
+}
+
+.dp-header img {
+    border-radius: 30px;
+}
+
+.dp-header-name {
+    font-family: 'Monserrat Reguler';
+    font-size: 1.5em;
+    color: var(--black);
+}
+
+.dp-header-content {
+    padding: 40px 0px;
+}
+
+.dp-header-name-content {
+    padding: 10px 0px;
+    font-family: 'Monserrat Reguler';
+    font-size: 1.3em;
+    color: var(--black);
+}
+
+.dp-rating,
+.dp-stok {
+    margin-bottom: 0px;
+}
+
+.dp-stok {
+    margin-left: 39px;
+}
+
+.dp-rating img {
+    width: 35px;
+    padding-right: 10px;
+}
+
+.dp-header-name-content strong {
+    font-family: 'Monserrat Bold';
+    font-size: 1em;
+    color: var(--black);
+}
+
+.dp-harga {
+    font-family: 'Monserrat Bold';
+    font-size: 1.2em;
+    color: var(--black);
+}
+
+.dp-header-main {
+    padding: 10px 0px;
+}
+
+.section-2-dp {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+    margin: 20px 0px 0px 0px;
+}
+
+.section-2-dp-main {
+    padding: 30px 30px 30px 30px;
+}
+
+.dp-deskripsi-judul {
+    padding: 20px 0px;
+}
+
+.dp-deskripsi-judul p {
+    margin: 0px;
+    font-family: 'Monserrat Reguler';
+    font-size: 1.5em;
+    color: var(--black);
+}
+
+.dp-deskripsi-judul strong {
+    font-family: 'Monserrat Bold';
+}
+
+.dp-deskripsi-content {
+    padding-bottom: 40px;
+}
+
+.dp-deskripsi-content p {
+    font-family: 'Monserrat Reguler';
+    color: var(--black);
+    font-size: 1.2em;
+    padding-bottom: 120px;
+    margin: 0px;
+}
+
+.dp-deskripsi-content-button {
+    width: 100%;
+}
+
+.btn-dp-beli {
+    padding: 10px 40px;
+    background-color: var(--white);
+    border: 1px solid var(--black);
+    color: var(--black);
+}
+
+.btn-dp-beli:hover {
+    color: var(--white);
+    background-color: var(--blue);
+}
+
+.btn-dp-keranjang {
+    padding: 10px 40px;
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.btn-dp-beli,
+.btn-dp-keranjang {
+    font-family: 'Monserrat Bold';
+    font-size: 1.2em;
+    border-radius: 15px;
+    width: 100%;
+}
+
+.btn-dp-keranjang:hover {
+    color: var(--black);
+    background-color: transparent;
+    border: 1px solid var(--black);
+}
+
+.btn-checkout:hover {
+    color: var(--black);
+    background-color: transparent;
+    border: 1px solid var(--black);
+}
+
+.section-1-keranjang {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+    margin: 20px 0px 0px 0px;
+}
+
+.section-1-keranjang-main {
+    padding: 20px 40px;
+}
+
+.form-check-label {
+    font-family: 'Monserrat Reguler';
+    color: var(--black);
+}
+
+input.form-check-input.cb-all {
+    width: 20px;
+    height: 20px;
+    top: -4px;
+    padding-right: 10px;
+}
+
+.section-2-keranjang {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+    margin: 20px 0px 0px 0px;
+}
+
+.section-2-keranjang-main {
+    padding: 0px 40px 200px 40px;
+}
+
+.img-keranjang img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 15px;
+    margin: auto;
+}
+
+.keranjang-parent h1 {
+    font-family: 'Monserrat Reguler';
+    font-size: 1em;
+    color: var(--black);
+    margin-bottom: 5px;
+}
+
+.keranjang-parent p {
+    font-family: 'Monserrat Bold';
+    font-size: 1em;
+    color: var(--black);
+    margin-bottom: 10px;
+}
+
+.form-group .ta {
+    font-size: 0.8em;
+    height: 140px;
+}
+
+.keranjang-icon ul li {
+    list-style: none;
+    display: inline;
+    margin: 0px;
+}
+
+.keranjang-icon ul li img {
+    width: 20px;
+    height: 20px;
+}
+
+.keranjang-icon .ss {
+    width: 35px;
+    height: auto;
+}
+
+.keranjang-icon ul {
+    margin: 0;
+}
+
+.nav-header .stg img {
+    width: 35px;
+    height: auto;
+}
+
+.keranjang-icon input {
+    width: 50px;
+    display: inline;
+    border-top: 0px;
+    border-left: 0px;
+    border-bottom: 2px solid var(--black);
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-right: 0px;
+    padding-bottom: 0px;
+    margin: 0px;
+}
+
+.box-keranjang {
+    padding: 40px 0px;
+}
+
+.section-3-keranjang {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+    margin: 20px 0px 0px 0px;
+}
+
+.section-3-keranjang-main {
+    padding: 40px 40px 40px 40px;
+}
+
+.bungkus {
+    margin: 0px;
+}
+
+.bungkus label {
+    font-size: 1.2em;
+    color: var(--black);
+    font-family: 'Monserrat Bold';
+    margin: 0px;
+}
+
+.bungkus .form-control {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    padding-bottom: 0px;
+    border-bottom: 2px solid var(--black);
+}
+
+.btn-checkout {
+    padding: 20px;
+    display: block;
+    color: var(--white);
+    background-color: var(--blue);
+    border-radius: 20px;
+    font-family: 'Monserrat Bold';
+    font-size: 1.2em;
+}
+
+.section-1-setting {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+    margin: 20px 0px 0px 0px;
+}
+
+.section-1-setting-main {
+    padding: 10px 10px 35px 10px;
+}
+
+.name-user-setting {
+    color: var(--black);
+    font-family: 'Monserrat Reguler';
+    padding-left: 30px;
+    width: 60%;
+}
+
+.name-user-setting h1 {
+    font-size: 1.5em;
+    display: block;
+    margin: 0px;
+}
+
+.name-user-setting h1 strong {
+    font-family: 'Monserrat Bold';
+}
+
+.name-user-setting p {
+    margin: 10px 0px;
+}
+
+.lines {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+    position: absolute;
+    left: 0;
+}
+
+.ll {
+    padding: 0px 10px;
+}
+
+.kk {
+    border: 1px solid var(--black);
+    width: 100%;
+}
+
+.section-2-setting {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+}
+
+.section-2-setting-main {
+    padding: 0px 10px 50px 10px;
+}
+
+.section-2-content {
+    color: var(--black);
+    font-family: 'Monserrat Reguler';
+    padding: 20px 0px 0px 0px;
+}
+
+.section-2-content h1 {
+    font-family: 'Monserrat Bold';
+    margin-bottom: 3px;
+    font-size: 0.95em;
+    color: var(--black);
+}
+
+.section-2-content p {
+    margin-bottom: 10px;
+    font-size: 0.7em;
+    color: var(--black);
+}
+
+.img-setting-section-2 {
+    width: 10px;
+    margin-right: 10px;
+}
+
+.button-setting-logout {
+    background-color: var(--white);
+    padding: 0px 40px 40px 40px;
+    width: 100%;
+    height: auto;
+}
+
+.btn-logout {
+    padding: 5px 0px;
+    color: var(--black);
+    border: 1px solid var(--black);
+    font-family: 'Monserrat Bold';
+    font-size: 0.95em;
+}
+
+.btn-logout:hover {
+    color: var(--white);
+    background-color: var(--black);
+}
+
+.section-1-atur {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+    margin: 20px 0px 0px 0px;
+}
+
+.section-1-atur-main {
+    padding: 40px 40px 30px 40px;
+}
+
+.data-diri {
+    font-family: 'Monserrat Bold';
+    color: var(--black);
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.name-user-atur {
+    color: var(--black);
+    font-family: 'Monserrat Reguler';
+    padding-left: 30px;
+    width: 60%;
+}
+
+.name-user-atur h1 {
+    font-family: 'Monserrat Bold';
+    font-size: 1.5em;
+    display: block;
+    margin: 0px;
+}
+
+.name-user-atur p {
+    margin: 10px 0px;
+}
+
+.section-2-atur {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+}
+
+.section-2-atur-main {
+    padding: 0px 40px 150px 40px;
+}
+
+.img-atur {
+    font-family: 'Monserrat Reguler';
+    font-size: 0.9em;
+    border-radius: 10px;
+    color: var(--black);
+    background-color: var(--white);
+    padding: 20px 10px;
+    border: 2px solid var(--black);
+    width: 100%;
+    border-right: none;
+}
+
+.input-atur {
+    border-radius: 10px;
+    color: var(--black);
+    background-color: var(--white);
+    border: 2px solid var(--black);
+    border-left: none;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.section-2-atur-content .input-group {
+    margin-bottom: 25px;
+}
+
+.position-circle {
+    position: relative;
+}
+
+.atur-circle {
+    position: absolute;
+    background-color: var(--red);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    top: 16px;
+    right: 2px;
+}
+
+.atur-circle img {
+    width: 15px;
+    height: auto;
+}
+
+.jk h1 {
+    font-family: 'Monserrat Bold';
+    font-size: 1.2em;
+    color: var(--black);
+}
+
+.jk label {
+    font-family: 'Monserrat Reguler';
+    font-size: 1em;
+}
+
+.gdd {
+    padding: 20px 40px;
+}
+
+.btn-ganti-data-diri {
+    font-family: 'Monserrat Bold';
+    padding: 15px;
+    font-size: 1em;
+    color: var(--white);
+    background-color: var(--blue);
+    border-radius: 10px;
+}
+
+.btn-ganti-data-diri:hover {
+    color: var(--white);
+}
+
+.section-1-ganti-email {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+    margin-top: 20px;
+}
+
+.section-1-ganti-email-main {
+    padding: 40px 40px 200px 40px;
+}
+
+.section-1-ganti-email-main h1 {
+    font-family: 'Monserrat Bold';
+    font-size: 1.5em;
+    color: var(--black);
+    margin-bottom: 20px;
+}
+
+.section-1-ganti-email-main .form-group {
+    margin-bottom: 25px;
+}
+
+.bge {
+    padding: 20px 40px;
+}
+
+.btn-ganti-email {
+    font-family: 'Monserrat Bold';
+    padding: 15px;
+    font-size: 1em;
+    color: var(--white);
+    background-color: var(--blue);
+    border-radius: 10px;
+}
+
+.btn-ganti-email:hover {
+    color: var(--white);
+}
+
+.section-1-ganti-password {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+    margin-top: 20px;
+}
+
+.section-1-ganti-password-main {
+    padding: 40px 40px 200px 40px;
+}
+
+.section-1-ganti-password-main h1 {
+    font-family: 'Monserrat Bold';
+    font-size: 1.5em;
+    color: var(--black);
+    margin-bottom: 20px;
+}
+
+.section-1-ganti-password-main .form-group {
+    margin-bottom: 25px;
+}
+
+.bgp {
+    padding: 20px 40px;
+}
+
+.btn-ganti-password {
+    font-family: 'Monserrat Bold';
+    padding: 15px;
+    font-size: 1em;
+    color: var(--white);
+    background-color: var(--blue);
+    border-radius: 10px;
+}
+
+.btn-ganti-password:hover {
+    color: var(--white);
+}
+
+.section-1-urut-berdasarkan {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+    margin-top: 20px;
+}
+
+.section-1-urut-berdasarkan-main {
+    padding: 40px 40px 100px 40px;
+}
+
+.filter-berdasarkan {
+    width: 100%;
+    height: auto;
+    padding: 20px 0px;
+}
+
+.filter-berdasarkan ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.filter-berdasarkan li {
+    display: inline-block;
+    cursor: pointer;
+    background-color: var(--white);
+    border: 2px solid var(--black);
+    border-radius: 7px;
+    margin: 0px 20px;
+}
+
+.filter-berdasarkan a {
+    padding: 2px 25px;
+}
+
+.filter-berdasarkan h1 {
+    font-family: 'Monserrat Reguler';
+    color: var(--black);
+    font-size: 1em;
+    margin-bottom: 0px;
+}
+
+.h1-ub {
+    font-family: 'Monserrat Bold';
+    font-size: 1.35em;
+    color: var(--black);
+    margin-top: 40px;
+    margin-bottom: 0px;
+}
+
+.navbar .img-lp {
+    width: 50px;
+    height: auto;
+}
+
+.section-1-list-pesanan {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+    margin-top: 20px;
+}
+
+.section-1-list-pesanan-main {
+    padding: 40px 40px 200px 40px;
+}
+
+.header-list-pesanan {
+    margin-bottom: 10px;
+}
+
+.header-list-pesanan h1 {
+    font-family: 'Monserrat Bold';
+    color: var(--black);
+    font-size: 1.2em;
+    margin: 0px;
+}
+
+.btn-lp-filter {
+    font-family: 'Monserrat Reguler';
+    color: var(--black);
+    font-size: 0.9em;
+    border: 1px solid var(--black);
+    border-radius: 5px;
+    padding: 2px 20px;
+}
+
+.btn-lp-filter:hover {
+    color: var(--black);
+    background-color: var(--grey);
+    border: 1px solid(--deep-grey);
+}
+
+.card-pesanan {
+    padding: 20px;
+    border: 1px solid var(--black);
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-pesanan h1 {
+    font-family: 'Monserrat Bold';
+    font-size: 1.1em;
+    color: var(--black);
+    margin-bottom: 5px;
+}
+
+.card-pesanan p {
+    font-family: 'Monserrat Reguler';
+    font-size: 0.9em;
+    color: var(--black);
+    margin-bottom: 5px;
+}
+
+.btn-pesanan {
+    font-family: 'Monserrat Reguler';
+    font-size: 0.8em;
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 2px 10px;
+    align-self: flex-end;
+    border-radius: 5px;
+}
+
+.card-pesanan .pesanan-date {
+    font-family: 'Monserrat Reguler';
+    font-size: 0.8em;
+    margin: 0px;
+    font-style: italic;
+    color: var(--black);
+}
+
+.card-pesanan .pesanan-date strong {
+    font-family: 'Monserrat Bold';
+    font-style: normal;
+}
+
+.img-card-pesanan {
+    border-radius: 15px;
+}
+
+.section-1-statistik {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+    margin-top: 20px;
+}
+
+.section-1-statistik-main {
+    padding: 40px 40px 40px 40px;
+}
+
+.card-komisi {
+    width: 100%;
+    height: auto;
+    box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.05);
+}
+
+.card-komisi-header {
+    background-color: var(--grey);
+    padding: 20px;
+}
+
+.card-komisi-header h1 {
+    font-family: 'Monserrat Bold';
+    font-size: 1em;
+    color: var(--black);
+    margin: 0px;
+}
+
+.card-komisi-header p {
+    font-family: 'Monserrat Bold';
+    font-size: 1em;
+    color: var(--black);
+    margin: 0px;
+}
+
+.card-komisi-body {
+    background-color: var(--white);
+    border: 2px solid var(--grey);
+    border-top: 0px;
+    padding: 20px;
+}
+
+.card-komisi-content {
+    width: 100%;
+    height: auto;
+}
+
+.card-komisi-main-content {
+    background-color: var(--grey);
+    padding: 20px;
+    border-radius: 7px;
+    margin-bottom: 15px;
+}
+
+.dot-komisi {
+    background-color: var(--blue);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.dot-komisi h1 {
+    font-family: 'Monserrat Bold';
+    font-size: 1em;
+    margin: 0px;
+    color: var(--white);
+}
+
+.card-komisi-text {
+    font-family: 'Monserrat Reguler';
+    color: var(--black);
+    margin-left: 10px;
+}
+
+.card-komisi-text h1 {
+    margin: 0px;
+    font-family: 'Monserrat Bold';
+    font-size: 1em;
+}
+
+.card-komisi-text P {
+    margin: 0px;
+    font-size: 0.8em;
+}
+
+.section-2-statistik {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+}
+
+.section-2-statistik-main {
+    padding: 40px 40px 200px 40px;
+}
+
+.riwayat-header h1 {
+    font-family: 'Monserrat Bold';
+    font-size: 1em;
+    color: var(--black);
+}
+
+.riwayat-penjualan-status {
+    width: 100%;
+    height: auto;
+    padding: 10px 0px;
+}
+
+.riwayat-penjualan-status ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.riwayat-penjualan-status ul li {
+    display: inline-block;
+    cursor: pointer;
+    margin: 0px 20px;
+}
+
+.riwayat-penjualan-status ul li a {
+    font-family: 'Monserrat Reguler';
+    font-size: 0.8em;
+    color: va(--black);
+}
+
+.riwayat-penjualan-status ul li a.active {
+    padding: 3px 20px;
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.riwayat-penjualan-status ul li a.active:hover {
+    color: var(--black);
+    background-color: var(--grey);
+}
+
+.btn-pesanan,
+.btn-lp-filter,
+.btn-ganti-password,
+.btn-ganti-email,
+.btn-ganti-data-diri,
+.btn-logout,
+.btn-checkout,
+.btn-dp-beli,
+.btn-dp-keranjang,
+.btn-b-indo,
+.btn-b-ing,
+.btn-baca,
+.btn-f,
+.btn-promo:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.btn-pesanan,
+.btn-lp-filter,
+.btn-ganti-password,
+.btn-ganti-email,
+.btn-ganti-data-diri,
+.btn-logout,
+.btn-checkout,
+.btn-dp-beli,
+.btn-dp-keranjang,
+.btn-b-indo,
+.btn-b-ing,
+.btn-baca,
+.btn-promo,
+.btn-f,
+.btn-selebihnya {
+    transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.btn-f:hover {
+    background-color: var(--grey);
+}
+
+.section-2-atur-content .form-control:focus {
+    box-shadow: none;
+    outline: none;
+    border: 2px solid var(--black);
+}
+
+.navbar .form-control:focus {
+    box-shadow: none;
+    outline: none;
+    border: 1px solid var(--grey);
+}
+
+.img-deskripsi-setting {
+    max-width: 100px;
+    margin-right: 20px;
+}
+
+.name-deskripsi-setting {
+    color: var(--black);
+    font-family: 'Monserrat Reguler';
+    width: 100%;
+}
+
+.name-deskripsi-setting h1 {
+    font-size: 1.5em;
+    display: block;
+    margin: 0px;
+}
+
+.name-deskripsi-setting h1 strong {
+    font-family: 'Monserrat Bold';
+}
+
+.name-deskripsi-setting p {
+    margin: 10px 0px;
+}
+
+.user-deskripsi-info {
+    padding-bottom: 40px;
+}
+
+.btn-k {
+    position: relative;
+}
+
+.bandage-keranjang {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--red);
+    color: var(--white);
+    font-size: 0.6em;
+    top: -8px;
+    right: 7px;
+}
+
+.img-share {
+    width: 25px;
+}
+
+.name-img-setting {
+    font-size: 0.7em;
+}
+
+.img-setting {
+    max-width: 70px;
+    margin-right: 15px;
+}
+
+.name-img-setting h1 {
+    font-family: 'Monserrat Reguler';
+    color: var(--black);
+    font-size: 1.5em;
+    margin: 0px;
+}
+
+.name-img-setting h1 strong {
+    font-family: 'Monserrat Bold';
+    font-size: 0.9em;
+}
+
+.name-img-setting p {
+    font-size: 0.7em;
+    margin: 3px 0px 5px 0px;
+}
+
+.navbar .img-setting-close {
+    width: 15px;
+    margin: 0px 10px 0px 0px;
+}
+
+.img-atur-akun {
+    max-width: 100px;
+}
+
+.name-atur-akun {
+    margin-left: 20px;
+    color: var(--black);
+}
+
+.name-atur-akun h1 {
+    font-family: 'Monserrat Bold';
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.name-atur-akun p {
+    font-family: 'Monserrat Reguler';
+    font-size: 0.9em;
+    margin: 0px;
+}
+
+.navbar .img-search {
+    max-width: 20px;
+    margin: 0px;
+}
+
+.input-search {
+    background-color: var(--white);
+    border-right: none;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.input-fixing {
+    border-left: none;
+    padding-left: 0px;
+    font-family: 'Monserrat Bold';
+    font-size: 0.9em;
+}
+
+.section-1-ganti-email-main .input-group {
+    margin-bottom: 25px;
+}
+
+.section-1-ganti-password-main .input-group {
+    margin-bottom: 25px;
+}
+
+.img-card-pesanan {
+    max-width: 140px;
+}
+
+.btn-pesanan:hover {
+    color: var(--black);
+    background-color: var(--grey);
+}
+
+.btn-kf {
+    cursor: default !important;
+}
+
+.input-disable {
+    background-color: var(--white) !important;
+    font-family: 'Monserrat Bold';
+}
+
+.nav-setting {
+    height: 100%;
+    width: 0;
+    position: absolute;
+    z-index: 99999;
+    bottom: 0;
+    right: 0;
+    background-color: var(--white);
+    overflow-x: hidden;
+    -webkit-box-shadow: -2px 0px 22px -10px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -2px 0px 22px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: -2px 0px 22px -10px rgba(0, 0, 0, 0.75);
+    transition: 0.7s;
+}
+
+.navbar-set {
+    background-color: var(--white);
+    box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px 30px !important;
+}
+
+.navbar .h1-set {
+    font-size: 1.1em;
+}
+
+.filter-collapse {
+    height: 0;
+    width: 100%;
+    position: absolute;
+    z-index: 99999;
+    bottom: 0;
+    right: 0;
+    background-color: var(--white);
+    overflow-x: hidden;
+    -webkit-box-shadow: -2px 0px 22px -10px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -2px 0px 22px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: -2px 0px 22px -10px rgba(0, 0, 0, 0.75);
+    transition: 0.7s;
+}
+
+.img-masuk-keranjang {
+    width: 25px;
+}
+
+.section-1-login {
+    width: 100%;
+    height: auto;
+    background-color: var(--blue);
+    box-shadow: 0px 0px 10px 4px rgb(0 0 0 / 10%);
+}
+
+.section-1-login-main {
+    padding: 50px 20px;
+}
+
+.section-1-login-header {
+    color: var(--white);
+    width: 260px;
+}
+
+.section-1-login-header h1 {
+    font-family: 'Monserrat Bold';
+    font-size: 1.4em;
+}
+
+.section-1-login-header p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.login-header-text {
+    width: 255px;
+}
+
+.section-2-login {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    background-color: var(--white);
+}
+
+.section-2-login-main {
+    padding: 50px 20px;
+}
+
+.section-2-login-header h1 {
+    font-family: 'Monserrat Bold';
+    font-size: 1.4em;
+    margin-bottom: 5px;
+}
+
+.section-2-login-header p {
+    font-family: 'Monserrat Reguler';
+    font-size: 0.9em;
+    margin: 0;
+}
+
+.btn-register {
+    font-family: 'Monserrat Bold';
+    color: var(--blue);
+    transition: 0.7s;
+}
+
+.login-input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid var(--grey);
+    font-family: 'Monserrat Reguler';
+    font-size: 0.8em;
+    padding-left: 0;
+}
+
+.login-input:focus {
+    box-shadow: none;
+}
+
+.section-2-login-content {
+    padding-top: 40px;
+}
+
+.btn-login-lupa {
+    font-family: 'Monserrat Bold';
+    font-size: 0.75em;
+    color: var(--blue);
+    padding-left: 0;
+    padding-top: 8px;
+}
+
+.section-3-login {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+}
+
+.section-3-login-main {
+    padding: 50px 20px;
+}
+
+.btn-login {
+    font-family: 'Monserrat Bold';
+    font-size: 0.9em;
+    background-color: var(--blue);
+    color: var(--white);
+    border-radius: 10px;
+    padding: 10px 40px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    transition: 0.7s;
+}
+
+.btn-login:hover {
+    color: var(--white);
+    background-color: var(--black);
+}
+
+.line-or {
+    margin: 20px 0;
+}
+
+.line-or p {
+    font-size: 0.9em;
+    margin-bottom: 0;
+}
+
+.line-or-left {
+    width: 100%;
+    border: 1px solid var(--black);
+}
+
+.line-or-right {
+    width: 100%;
+    border: 1px solid var(--black);
+}
+
+.btn-login-google {
+    background-color: var(--white);
+    color: var(--black);
+    font-family: 'Monserrat Bold';
+    font-size: 0.9em;
+    border-radius: 10px;
+    border: 2px solid var(--grey);
+    padding: 10px 40px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    transition: 0.7s;
+}
+
+.btn-login-google:hover {
+    background-color: var(--grey);
+}
+
+.img-google {
+    max-width: 20px;
+    margin-right: 10px;
+}
+
+.section-1-register {
+    width: 100%;
+    height: auto;
+    background-color: var(--blue);
+    box-shadow: 0px 0px 10px 4px rgb(0 0 0 / 10%);
+}
+
+.section-1-register-main {
+    padding: 50px 20px;
+}
+
+.section-1-register-header {
+    color: var(--white);
+    width: 260px;
+}
+
+.section-1-register-header h1 {
+    font-family: 'Monserrat Bold';
+    font-size: 1.4em;
+}
+
+.section-1-register-header p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.section-2-register {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    background-color: var(--white);
+}
+
+.section-2-register-main {
+    padding: 50px 20px;
+}
+
+.section-2-register-header h1 {
+    font-family: 'Monserrat Bold';
+    font-size: 1.4em;
+    margin-bottom: 5px;
+}
+
+.section-2-register-header p {
+    font-family: 'Monserrat Reguler';
+    font-size: 0.9em;
+    margin: 0;
+}
+
+.section-2-register-content {
+    padding-top: 40px;
+}
+
+.kelamin {
+    font-family: 'Monserrat Bold';
+    font-size: 0.8em;
+    color: var(--black);
+    margin-top: 20px;
+}
+
+.label-kelamin {
+    font-family: 'Monserrat Reguler';
+    font-size: 0.75em;
+}
+
+.section-3-register {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+}
+
+.section-3-register-main {
+    padding: 50px 20px;
+}
+
+.btn-join {
+    background-color: var(--blue);
+    color: var(--white);
+    font-family: 'Monserrat Bold';
+    font-size: 0.9em;
+    border-radius: 10px;
+    border: 2px solid var(--grey);
+    padding: 10px 40px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    transition: 0.7s;
+}
+
+.btn-join:hover {
+    background-color: var(--grey);
+    color: var(--black);
+}
+
+.section-3-register-text {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.section-3-register-text p {
+    font-family: 'Monserrat Reguler';
+    font-size: 0.75em;
+    text-align: center;
+}
+
+.section-1-regjoin {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--white);
+}
+
+.section-1-regjoin-main {
+    padding: 50px 30px;
+    padding-bottom: 0;
+}
+
+.img-regjoin {
+    max-width: 250px;
+}
+
+.regjoin-main-content {
+    height: 230px;
+}
+
+.regjoin-text {
+    text-align: center;
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.regjoin-text h1 {
+    font-family: 'Monserrat Bold';
+    font-size: 1.4em;
+    margin-top: 30px;
+}
+
+.regjoin-text p {
+    font-size: 0.8em;
+}
+
+.btn-join-2 {
+    background-color: var(--blue);
+    color: var(--white);
+    font-family: 'Monserrat Bold';
+    font-size: 1em;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+.btn-login-2 {
+    background-color: var(--white);
+    color: var(--black);
+    font-family: 'Monserrat Bold';
+    font-size: 1em;
+    border-radius: 10px;
+    padding: 10px 30px;
+    border: 1px solid var(--black);
+}
+
+.btn-join-2,
+.btn-login-2 {
+    transition: 0.7s;
+}
+
+.btn-join-2:hover {
+    background-color: var(--grey);
+    color: var(--black);
+}
+
+.btn-login-2:hover {
+    background-color: var(--grey);
+    color: var(--black);
+    border: 1px solid transparent;
+}
+
+.button-regjoin {
+    margin-top: 120px;
+}
+
+/* Reward Page */
+.section-1-reward {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+    margin: 20px 0px 0px 0px;
+}
+
+.section-1-reward-main {
+    padding: 20px 40px 120px 40px;
+}
+
+.btn-reward-pulsa,
+.btn-reward-data {
+    font-family: 'Monserrat Bold';
+    font-size: 0.8em;
+    transition: 0.7s;
+}
+
+.btn-reward-pulsa {
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 5px 15px;
+    margin-right: 20px;
+}
+
+.btn-reward-pulsa:hover {
+    background-color: var(--grey);
+    color: var(--black);
+}
+
+.btn-reward-data {
+    background-color: var(--grey);
+    color: var(--black);
+    padding: 5px 15px;
+}
+
+.btn-reward-data:hover {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.box-komisi-reward {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+    margin-top: 40px;
+}
+
+.box-komisi-reward-main {
+    padding: 25px 40px;
+    box-shadow: 0px 0px 7px 4px rgb(0 0 0 / 10%);
+    border-radius: 20px;
+}
+
+.box-komisi-reward-main h1 {
+    color: var(--black);
+    font-family: 'Monserrat Bold';
+    font-size: 1em;
+    margin-bottom: 0;
+}
+
+.card-reward {
+    padding: 20px;
+    border: 1px solid var(--black);
+    border-radius: 5px;
+    margin-top: 50px;
+    box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-reward h1 {
+    font-family: 'Monserrat Bold';
+    font-size: 1.1em;
+    color: var(--black);
+    margin-bottom: 5px;
+}
+
+.card-reward p {
+    font-family: 'Monserrat Reguler';
+    font-size: 0.9em;
+    color: var(--black);
+    margin-bottom: 5px;
+}
+
+.btn-reward {
+    font-family: 'Monserrat Reguler';
+    font-size: 0.8em;
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 2px 10px;
+    align-self: flex-end;
+    border-radius: 5px;
+    transition: 0.7s;
+}
+
+.btn-reward:hover {
+    background-color: var(--grey);
+    color: var(--black);
+}
+
+.card-reward .reward-date {
+    font-family: 'Monserrat Reguler';
+    font-size: 0.8em;
+    margin: 0px;
+    font-style: italic;
+    color: var(--black);
+}
+
+.card-reward .reward-date strong {
+    font-family: 'Monserrat Bold';
+    font-style: normal;
+}
+
+.img-card-reward {
+    border-radius: 15px;
+}
+
+.btn-tukar-reward {
+    font-family: 'Monserrat Bold';
+    font-size: 0.9em;
+    background-color: var(--blue);
+    color: var(--white);
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    transition: 0.7s;
+}
+
+.btn-tukar-reward:hover {
+    background-color: var(--grey);
+    color: var(--black);
+}
+
+
+.section-1-dt {
+    width: 100%;
+    height: auto;
+    background-color: var(--white);
+    margin: 20px 0px 0px 0px;
+}
+
+.section-1-dt-main {
+    padding: 20px 40px 120px 40px;
+}
+
+.dt-content h1 {
+    font-family: 'Monserrat Bold';
+    font-size: 1em;
+    color: var(--black);
+}
+
+.dt-content p {
+    font-family: 'Monserrat Reguler';
+    color: var(--black);
+    font-size: 0.9em;
+}
+
+.dt-content p span {
+    font-family: 'Monserrat Bold';
+}
+
+.line-dt {
+    width: 100%;
+    height: 1px;
+    background-color: var(--black);
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.box-total-dt {
+    width: 100%;
+    height: auto;
+    background-color: var(--grey);
+    margin-top: 40px;
+}
+
+.box-total-dt-main {
+    padding: 25px 40px;
+    border-radius: 10px;
+}
+
+.box-total-dt-main h1 {
+    color: var(--black);
+    font-family: 'Monserrat Bold';
+    font-size: 1em;
+    margin-bottom: 0;
+}
+
+.btn-dt-checkout {
+    background-color: var(--blue);
+    color: var(--white);
+    font-family: 'MOnserrat Bold';
+    font-size: 1em;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-top: 50px;
+    transition: 0.7s;
+}
+
+.btn-dt-checkout:hover {
+    background-color: var(--grey);
+    color: var(--black);
+}
+
+.btn-dt-ubah {
+    font-family: 'Monserrat Bold';
+    font-size: 0.9em;
+    background-color: var(--blue);
+    color: var(--white);
+    border-radius: 7px;
+    padding: 5px 20px;
+    transition: 0.7s;
+}
+
+.btn-dt-ubah:hover {
+    background-color: var(--grey);
+    color: var(--black);
+}
+
+@media screen and (max-width: 1440px) {
+    .dp-deskripsi-judul p {
+        font-size: 1.2em;
+    }
+
+    .dp-deskripsi-judul {
+        padding: 20px 0px 10px 0px;
+    }
+
+    .dp-deskripsi-content p {
+        font-size: 0.95em;
+    }
+
+    .name-deskripsi-setting h1 strong {
+        font-size: 0.9em;
+    }
+
+    .name-deskripsi-setting p {
+        font-size: 0.7em;
+        margin: 0px;
+    }
+
+    .fitur-name h1 {
+        font-size: 0.9em;
+    }
+
+    .navbar img {
+        width: 30px;
+    }
+
+    .dp-header-name {
+        font-size: 1.4em;
+    }
+
+    .dp-harga {
+        font-size: 1.1em;
+    }
+
+    .navbar h1 {
+        font-size: 1.4em;
+        padding-left: 0px;
+    }
+
+    .navbar .img-lp {
+        width: 35px;
+        height: 30px;
+        margin-right: 10px;
+    }
+
+    .dot-fitur {
+        width: 70px;
+        height: 70px;
+    }
+
+    .dot-fitur img {
+        width: 40%;
+    }
+
+    .section-1-content h1 {
+        font-size: 1.4em;
+    }
+
+    .box-komisi-content h1 {
+        font-size: 1em;
+    }
+
+    .card-promo-name h1 {
+        font-size: 0.8em;
+    }
+
+    .btn-selebihnya {
+        font-size: 1.2em;
+    }
+
+    .section-5-main h1 {
+        font-size: 1.4em;
+    }
+
+    .btn-baca {
+        font-size: 1em;
+    }
+
+    .navbar-bottom-content p {
+        font-family: 1em;
+        margin-top: 5px !important;
+    }
+
+    .navbar-bottom-content img {
+        width: 30px;
+        height: auto;
+    }
+
+    .section-5-main p {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .navbar-box {
+        padding: 20px 20px 0px 20px;
+    }
+
+    .section-1-icon ul {
+        padding: 0px;
+    }
+
+    .section-1-main {
+        padding: 0px 20px 100px 20px;
+    }
+
+    .section-1-main h1 {
+        font-size: 1.2em;
+    }
+
+    .section-1-main p {
+        font-size: 0.9em;
+    }
+
+    .box-search {
+        font-size: 0.8em;
+    }
+
+    .box-komisi-content {
+        padding: 0px 10px;
+    }
+
+    .box-komisi-content h1 {
+        font-size: 1em;
+    }
+
+    .section-2-main {
+        padding: 200px 20px 40px 20px;
+    }
+
+    .dot-fitur {
+        width: 60px;
+        height: 60px;
+    }
+
+    .dot-fitur img {
+        width: 25px;
+    }
+
+    .fitur-name h1 {
+        font-size: 0.7em;
+    }
+
+    .navbar-bottom-content img {
+        width: 25px;
+    }
+
+    .navbar-bottom-content p {
+        font-size: 0.7em;
+    }
+
+    .section-2-main {
+        padding: 200px 20px 0px 20px;
+    }
+
+    .section-3-header {
+        padding: 50px 0px 40px 0px;
+    }
+
+    .section-3-content {
+        padding: 0px 20px;
+    }
+
+    .section-3-header h1 {
+        font-size: 1em;
+    }
+
+    .btn-promo {
+        font-size: 0.8em;
+        border-radius: 15px;
+    }
+
+    .card-promo-name {
+        font-size: 0.8em;
+        margin: 10px;
+        padding: 5px 10px 5px 10px;
+        border-radius: 7px;
+    }
+
+    .section-3-content {
+        padding: 0px;
+    }
+
+    .selebihnya-content {
+        padding: 10px 20px 10px 20px;
+        border-radius: 13px;
+    }
+
+    .btn-selebihnya {
+        font-size: 1em;
+    }
+
+    .banner-info {
+        padding: 20px 0px;
+    }
+
+    .section-5-main {
+        padding: 20px 0px;
+    }
+
+    .section-5-main h1 {
+        font-size: 1.3em;
+    }
+
+    .section-5-main p {
+        margin: 0px;
+    }
+
+    .btn-baca {
+        padding: 0px;
+        font-size: 0.9em;
+    }
+
+    .section-6-main {
+        padding: 30px 0px 20px 0px;
+    }
+
+    .nav-main {
+        padding: 10px 20px;
+    }
+
+    .section-1-cari-produk-main {
+        padding: 20px 20px 120px 20px;
+    }
+
+    .cari-produk-main {
+        padding: 10px 0px;
+    }
+
+    .cari-produk-header {
+        padding: 10px 0px;
+    }
+
+    .cari-produk-header h1 {
+        font-size: 0.8em;
+    }
+
+    .cari-produk-header li {
+        margin: 0px 0px;
+    }
+
+    .card-body h5 {
+        font-size: 0.8em;
+        margin-bottom: 5px;
+    }
+
+    .card-body h1 {
+        font-size: 0.8em;
+        margin: 5px 0px;
+    }
+
+    .card-body {
+        padding: 10px;
+    }
+
+    .card-body small {
+        font-size: 0.65em;
+    }
+
+    .card-body img {
+        width: 25px;
+    }
+
+    .card-body .img-share {
+        width: 20px;
+    }
+
+    .box-search-cari-produk {
+        font-size: 0.8em;
+    }
+
+    .card-cp-box {
+        padding: 0px 10px 20px 10px;
+    }
+
+    .navbar h1 {
+        font-size: 1em;
+    }
+
+    .navbar img {
+        width: 25px;
+        margin-right: 15px;
+    }
+
+    .nav-header-icon img {
+        width: 25px;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .dp-header-content {
+        padding-top: 20px;
+    }
+
+    .dp-header-name {
+        font-size: 1.1em;
+    }
+
+    .dp-header-name-content {
+        font-size: 1em;
+    }
+
+    .section-1-dp-main {
+        padding: 20px 10px 0px 10px;
+    }
+
+    .dp-harga {
+        font-size: 1em;
+    }
+
+    .dp-deskripsi-judul p {
+        font-size: 1em;
+    }
+
+    .dp-deskripsi-content p {
+        padding-bottom: 50px;
+        font-size: 0.9em;
+    }
+
+    .dp-deskripsi-content {
+        padding-bottom: 20px;
+    }
+
+    .section-2-dp-main {
+        padding: 30px 10px 0px 10px;
+    }
+
+    .btn-dp-beli,
+    .btn-dp-keranjang {
+        font-size: 1em;
+        width: 100%;
+    }
+
+    .btn-dp-beli {
+        padding: 10px 20px;
+    }
+
+    .btn-dp-keranjang {
+        padding: 10px 20px;
+    }
+
+    .section-1-keranjang-main {
+        padding: 20px 20px;
+    }
+
+    .section-2-keranjang-main {
+        padding: 0px 20px 200px 20px;
+    }
+
+    .img-keranjang img {
+        max-width: 100px;
+        max-height: 100px;
+    }
+
+    .keranjang-parent h1 {
+        font-size: 0.8em;
+        margin-bottom: 3px;
+    }
+
+    .keranjang-parent p {
+        font-size: 0.9em;
+        margin-bottom: 3px;
+    }
+
+    .form-group .ta {
+        font-size: 0.6em;
+        height: 55px;
+    }
+
+    .keranjang-icon ul li img {
+        width: 17px;
+        height: auto;
+    }
+
+    .keranjang-icon a {
+        padding: 0 0px;
+    }
+
+    .keranjang-icon .ss {
+        width: 33px;
+        height: auto;
+        margin-right: 0px;
+    }
+
+    .section-3-keranjang-main {
+        padding: 30px 20px 30px 20px;
+    }
+
+    .bungkus label {
+        font-size: 0.9em;
+    }
+
+    .btn-checkout {
+        font-size: 0.9em;
+    }
+
+    .navbar-cari-produk {
+        padding: 30px 25px !important
+    }
+
+    .dp-header {
+        padding: 0px;
+    }
+
+    .img-deskripsi-setting {
+        max-width: 80px;
+        margin-right: 15px;
+    }
+
+    .name-deskripsi-setting h1 strong {
+        font-size: 0.7em;
+    }
+
+    .name-deskripsi-setting p {
+        font-size: 0.5em;
+    }
+
+    .user-deskripsi-info {
+        padding-bottom: 30px;
+    }
+
+    .dp-deskripsi-judul {
+        padding-top: 0px;
+    }
+
+    .bandage-keranjang {
+        top: -6px;
+        right: -6px;
+    }
+
+    .section-1-setting-main {
+        padding: 40px 20px 50px 20px;
+    }
+
+    .section-2-setting-main {
+        padding: 0px 20px 150px 20px;
+    }
+
+    .ll {
+        padding: 0px 20px;
+    }
+
+    .img-setting {
+        width: 100%;
+    }
+
+    .name-img-setting {
+        font-size: 100%;
+    }
+
+    .name-img-setting h1 {
+        font-size: 1.5em;
+    }
+
+    .name-img-setting p {
+        font-size: 0.5em;
+    }
+
+    .name-img-setting h1 strong {
+        font-size: 0.7em;
+    }
+
+    .section-2-content p {
+        font-size: 0.8em;
+    }
+
+    .section-2-content h1 {
+        font-size: 1em;
+    }
+
+    .img-setting-section-2 {
+        width: 13px;
+    }
+
+    .btn-logout {
+        font-size: 1em;
+        padding: 10px 0px;
+    }
+
+    .data-diri {
+        font-size: 1em;
+    }
+
+    .section-1-atur-main {
+        padding: 30px 20px 30px 20px;
+    }
+
+    .section-2-atur-main {
+        padding: 0px 20px 150px 20px;
+    }
+
+    .name-atur-akun h1 {
+        font-size: 1em;
+    }
+
+    .name-atur-akun p {
+        font-size: 0.8em;
+    }
+
+    .section-5-main p {
+        font-size: 0.8em;
+    }
+
+    .input-fixing {
+        font-size: 0.8em;
+    }
+
+    .navbar .img-search {
+        max-width: 15px;
+    }
+
+    .section-1-ganti-email-main {
+        padding: 40px 20px 130px 20px;
+    }
+
+    .section-1-ganti-email-main h1 {
+        font-size: 1.1em;
+    }
+
+    .section-1-ganti-password-main {
+        padding: 40px 20px 130px 20px;
+    }
+
+    .section-1-ganti-password-main h1 {
+        font-size: 1.1em;
+    }
+
+    .section-1-list-pesanan-main {
+        padding: 40px 20px 200px 20px;
+    }
+
+    .card-pesanan h1 {
+        font-size: 0.8em;
+    }
+
+    .card-pesanan p {
+        font-size: 0.5em;
+    }
+
+    .img-card-pesanan {
+        max-width: 120px;
+    }
+
+    .btn-pesanan {
+        font-size: 0.6em;
+    }
+
+    .pesanan-date {
+        margin-top: 10px !important;
+    }
+
+    .card-pesanan .pesanan-date {
+        font-size: 0.7em;
+    }
+
+    .section-1-statistik-main {
+        padding: 40px 20px 40px 20px;
+    }
+
+    .card-komisi-main-content {
+        padding: 15px;
+    }
+
+    .card-komisi-text h1 {
+        font-size: 0.8em;
+    }
+
+    .card-komisi-text p {
+        font-size: 0.65em;
+    }
+
+    .card-komisi-text {
+        margin-left: 0px;
+        margin-top: 10px;
+    }
+
+    .riwayat-penjualan-status ul li {
+        margin: 0px 0px;
+    }
+
+    .section-2-statistik-main {
+        padding: 40px 20px 200px 20px;
+    }
+
+    .section-1-urut-berdasarkan-main {
+        padding: 40px 20px 100px 20px;
+    }
+
+    .h1-ub {
+        font-size: 1em;
+    }
+
+    .filter-berdasarkan h1 {
+        font-size: 0.8em;
+    }
+
+    .filter-berdasarkan li {
+        margin: 0px 10px;
+    }
+
+    .filter-berdasarkan a {
+        padding: 2px 15px;
+    }
+
+    .filter-berdasarkan {
+        padding-bottom: 10px;
+    }
+
+    .form-check-label {
+        font-size: 0.8em;
+    }
+
+    .section-1-login-header h1 {
+        font-size: 1em;
+        margin-bottom: 5px;
+    }
+
+    .section-1-login-header p {
+        font-size: 0.75em;
+    }
+
+    .section-1-login-main {
+        padding: 30px 10px;
+    }
+
+    .section-2-login-main {
+        padding: 30px 10px;
+    }
+
+    .section-2-login-header h1 {
+        font-size: 1em;
+    }
+
+    .section-2-login-header p {
+        font-size: 0.75em;
+    }
+
+    .btn-register {
+        font-size: 1.05em;
+    }
+
+    .section-3-login-main {
+        padding-top: 30px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .btn-login {
+        font-size: 0.8em;
+        padding: 7px 10px;
+        width: 100%;
+    }
+
+    .btn-login-google {
+        width: 100%;
+        font-size: 0.8em;
+    }
+
+    .line-or-right,
+    .line-or-left {
+        border: none;
+        height: 1px;
+        background-color: var(--grey);
+    }
+
+    .line-or p {
+        font-size: 0.75em;
+    }
+
+    .section-1-register-main {
+        padding: 30px 10px;
+    }
+
+    .section-1-register-header h1 {
+        font-size: 1em;
+    }
+
+    .section-1-register-header p {
+        font-size: 0.75em;
+    }
+
+    .section-2-register-main {
+        padding: 30px 10px;
+    }
+
+    .section-2-register-header h1 {
+        font-size: 1em;
+    }
+
+    .section-2-register-header p {
+        font-size: 0.75em;
+    }
+
+    .btn-join {
+        width: 100%;
+    }
+
+    .section-3-register-text {
+        width: 80%;
+    }
+
+    .regjoin-main-content {
+        height: 170px;
+    }
+
+    .img-regjoin {
+        max-width: 180px;
+    }
+
+    .regjoin-text {
+        width: 80%;
+    }
+
+    .regjoin-text h1 {
+        font-size: 1em;
+        margin-top: 20px;
+    }
+
+    .section-1-regjoin-main {
+        padding: 30px 10px;
+        padding-bottom: 35px;
+    }
+
+    .regjoin-text p {
+        font-size: 0.75em;
+    }
+
+    .section-1-regjoin {
+        height: auto;
+    }
+
+    /* Reeward */
+    .section-1-reward-main {
+        padding: 20px 20px 120px 20px;
+    }
+
+    .card-reward h1 {
+        font-size: 0.8em;
+    }
+
+    .card-reward p {
+        font-size: 0.5em;
+    }
+
+    .btn-reward {
+        font-size: 0.6em;
+    }
+
+    .card-reward .reward-date {
+        font-size: 0.7em;
+    }
+
+    .reward-date {
+        margin-top: 10px !important;
+    }
+
+    .box-komisi-reward-main {
+        padding: 25px 30px;
+    }
+
+    .box-komisi-reward-main h1 {
+        font-size: 0.9em;
+    }
+
+    .btn-tukar-reward {
+        font-size: 0.7em;
+        padding: 7px 20px;
+    }
+
+    .section-1-dt-main {
+        padding: 20px 15px 60px 15px;
+    }
+
+    .dt-content h1 {
+        font-size: 0.9em;
+    }
+
+    .dt-content p {
+        font-size: 0.75em;
+    }
+
+    .btn-dt-ubah {
+        font-size: 0.75em;
+        padding: 5px 15px;
+    }
+
+    .box-total-dt-main {
+        padding: 25px 20px;
+    }
+
+    .box-total-dt-main h1 {
+        font-size: 0.9em;
+    }
+
+    .btn-dt-checkout {
+        font-size: 0.9em;
+    }
+}

@@ -1,0 +1,25 @@
+<form action="{% url 'webcosmoapp:changesubkategori' %}" method="POST">
+    <div class="modal-body">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="hidden" name="id" value="{{ subkategori.id_subKat }}">
+            <label for="">Kategori</label>
+            <select name="kategori" class="form-control" required id="">
+                <option value="{{ subkategori.id_kategori.id }}">{{ subkategori.id_kategori.kategori }}</option>
+                <option value="">--- Pilih Kategori ---</option>
+                {% for k in kategori %}
+                <option value="{{ k.id }}">{{ k.kategori }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="">Sub Kategori</label>
+            <input type="text" class="form-control" value="{{ subkategori.sub_kategori }}" name="sub_kategori" required>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Tambah</button>
+    </div>
+</form>

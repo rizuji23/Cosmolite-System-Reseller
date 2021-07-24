@@ -1,0 +1,152 @@
+{% load static %}
+<nav class="navbar navbar-set">
+    <div class="col d-flex justify-content-start align-items-center p-0">
+        <button class="btn p-0" onclick="closeNav()">
+            <img src="{% static 'reseller/assets/img/Icons/Mask Group 7.png' %}" class="img-setting-close">
+        </button>
+        <h1 class="h1-set">
+            Setting
+        </h1>
+    </div>
+</nav>
+<div class="section-1-setting">
+    <div class="container">
+        <div class="section-1-setting-main">
+            <div class="row no-gutters">
+                <div class="col d-flex justify-content-start align-items-center">
+                    <img src="{{ reseller.dir_image.url }}" class="rounded-circle img-setting img-fluid">
+                    <div class="name-img-setting">
+                        <h1>
+                            <strong>{{ reseller.nama_depan }} {{ reseller.nama_belakang }}</strong>
+                            <p>Reseller</p>
+                            <strong>Rp. 20.000.000,-</strong>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="lines">
+    <div class="container">
+        <div class="ll">
+            <div class="kk">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section-2-setting">
+    <div class="container">
+        <div class="section-2-setting-main">
+            <div class="section-2-content">
+                <div class="col">
+                    <div class="row">
+                        <div class="col p-0">
+                            <a href="{% url 'webcosmoappreseller:aturakun' %}" class="btn text-left p-0">
+                                <h1>
+                                    Akun
+                                </h1>
+                                <p>
+                                    Atur Data Diri, Alamat, Kata sandi dan alamat
+                                </p>
+                            </a>
+                        </div>
+                        <div class="col-2 p-0 d-flex justify-content-end align-items-center">
+                            <a href="{% url 'webcosmoappreseller:aturakun' %}" class="btn p-0">
+                                <img src="{% static 'reseller/assets/img/Icons/back-light.png' %}"
+                                    class="img-setting-section-2">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lines">
+                <div class="container">
+                    <div class="ll">
+                        <div class="kk">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-2-content">
+                <div class="col">
+                    <div class="row">
+                        <div class="col p-0">
+                            <a href="#" class="btn text-left p-0">
+                                <h1>
+                                    Pembayaran
+                                </h1>
+                                <p>
+                                    Atur Kartu Kredit Dan Lainnya
+                                </p>
+                            </a>
+                        </div>
+                        <div class="col-2 p-0 d-flex justify-content-end align-items-center">
+                            <a href="#" class="btn p-0">
+                                <img src="{% static 'reseller/assets/img/Icons/back-light.png' %}"
+                                    class="img-setting-section-2">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lines">
+                <div class="container">
+                    <div class="ll">
+                        <div class="kk">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lines">
+                <div class="container">
+                    <div class="ll">
+                        <div class="kk">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-2-content">
+                <div class="col">
+                    <div class="row">
+                        <div class="col p-0">
+                            <a href="{% url 'webcosmoappreseller:gantipassword' %}" class="btn text-left p-0">
+                                <h1>
+                                    Password
+                                </h1>
+                                <p>
+                                    Ganti password akun
+                                </p>
+                            </a>
+                        </div>
+                        <div class="col-2 p-0 d-flex justify-content-end align-items-center">
+                            <a href="{% url 'webcosmoappreseller:gantipassword' %}" class="btn p-0">
+                                <img src="{% static 'reseller/assets/img/Icons/back-light.png' %}"
+                                    class="img-setting-section-2">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lines">
+                <div class="container">
+                    <div class="ll">
+                        <div class="kk">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="button-setting-logout">
+    <a href="{% url 'webcosmoappreseller:logout' %}" class="btn btn-block btn-logout">
+        Log out
+    </a>
+</div>

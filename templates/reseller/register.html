@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cosmolite | Register</title>
+    <link rel="shortcut icon" href="{% static 'reseller/assets/img/logo-fav.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/owl.theme.default.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/animate.css' %}">
+</head>
+
+<body>
+
+    <div class="container-custom">
+        <div class="section-1-register">
+            <div class="container">
+                <div class="section-1-register-main">
+                    <div class="section-1-register-header">
+                        <h1 class="animate__animated animate__fadeInUp">
+                            Hallo Selamat Datang Di Cosmolite
+                        </h1>
+                        <p class="animate__animated animate__fadeInUp duration-3">
+                            Menjadi Mitra Dan Reseller kami Dengan Mudah !
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form method="POST" action="{% url 'webcosmoappreseller:addreseller' %}">
+            {% csrf_token %}
+            <div class="section-2-register">
+                <div class="container">
+                    <div class="section-2-register-main">
+                        <div class="section-2-register-header">
+                            <h1 class=" animate__animated animate__fadeInUp duration-4">
+                                Daftar
+                            </h1>
+                            <p class=" animate__animated animate__fadeInUp duration-5">
+                                Sudah Punya Akun?
+                                <a href="{% url 'webcosmoappreseller:index' %}" class="btn p-0 btn-register">
+                                    Login
+                                </a>
+                            </p>
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div {% if message.tags == 'error' %} class="alert alert-danger" {% else %}
+                                class="alert alert-success" {% endif %}>
+                                <div>
+                                    {{ message }}
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="section-2-register-content">
+
+                            <div class="form-group animate__animated animate__fadeInUp duration-6">
+                                <input type="text" class="form-control login-input" name="nama_depan" id="fullname"
+                                    aria-describedby="fullname" placeholder="Nama Depan" required>
+                            </div>
+                            <div class="form-group animate__animated animate__fadeInUp duration-6">
+                                <input type="text" class="form-control login-input" name="nama_belakang" id="fullname"
+                                    aria-describedby="fullname" placeholder="Nama Belakang" required>
+                            </div>
+                            <div class="form-group animate__animated animate__fadeInUp duration-7">
+                                <input type="email" class="form-control login-input" name="email" id="email"
+                                    aria-describedby="email" placeholder="Email" required>
+                            </div>
+                            <div class="form-group animate__animated animate__fadeInUp duration-6">
+                                <input type="text" class="form-control login-input" name="no_telp" id="fullname"
+                                    aria-describedby="fullname" placeholder="Nomor Telepon" required>
+                            </div>
+                            <div class="form-group animate__animated animate__fadeInUp duration-6">
+                                <input type="text" class="form-control login-input" name="username" id="fullname"
+                                    aria-describedby="fullname" placeholder="Username" required>
+                            </div>
+                            <div class="form-group animate__animated animate__fadeInUp duration-8">
+                                <input type="password" class="form-control login-input" name="password" id="password"
+                                    aria-describedby="password" placeholder="Password" required>
+                            </div>
+                            <div class="form-group mb-0 animate__animated animate__fadeInUp duration-9">
+                                <label for="kelamin" class="kelamin">Kelamin</label>
+                            </div>
+                            <div
+                                class="form-check form-check-inline mb-0 animate__animated animate__fadeInUp duration-9">
+                                <input class="form-check-input" type="radio" name="laki" id="radio" value="1">
+                                <label class="form-check-label label-kelamin" for="">Laki - Laki</label>
+                            </div>
+                            <div
+                                class="form-check form-check-inline mb-0 animate__animated animate__fadeInUp duration-9">
+                                <input class="form-check-input" type="radio" name="perempuan" id="" value="0">
+                                <label class="form-check-label label-kelamin" for="">Perempuan</label>
+                            </div>
+
+                            <div class="form-group mb-0 mt-2 animate__animated animate__fadeInUp duration-9">
+                                <input type="checkbox" value="1" id="kebijakan"
+                                    aria-label="Checkbox for following text input" name="subs">
+                                <label class="form-check-label label-kelamin" for="kebijakan">Berlangganan saya ke
+                                    Newsletter</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-3-register">
+                <div class="container">
+                    <div class="section-3-register-main">
+                        <button type="submit" class="btn btn-block btn-join animate__animated animate__fadeInUp">
+                            DAFTAR
+                        </button>
+                        <div class="section-3-register-text">
+
+                            <p class=" animate__animated animate__fadeInUp duration-3">
+                                By continuing, you agree to accept
+                                our Privacy Policy & Terms of Service
+                            </p>
+                        </div>
+                        <div class="line-or">
+                            <div class="row no-gutters animate__animated animate__fadeInUp duration-4">
+                                <div class="col d-flex align-items-center">
+                                    <div class="line-or-left"></div>
+                                </div>
+                                <div class="col-1 d-flex justify-content-center">
+                                    <p>
+                                        OR
+                                    </p>
+                                </div>
+                                <div class="col d-flex align-items-center">
+                                    <div class="line-or-right"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#"
+                            class="btn btn-block btn-login-google d-flex justify-content-center  animate__animated animate__fadeInUp duration-5">
+                            <img src="{% static 'reseller/assets/img/google.png' %}" alt="" class="img-google">
+                            Log - In With Google
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <script src="{% static 'reseller/assets/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'reseller/assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'reseller/assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'reseller/assets/js/script.js' %}"></script>
+</body>
+
+</html>

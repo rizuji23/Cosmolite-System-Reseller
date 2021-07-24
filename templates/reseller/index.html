@@ -1,0 +1,376 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cosmolite</title>
+    <link rel="shortcut icon" href="{% static 'reseller/assets/img/logo-fav.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/owl.theme.default.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/animate.css' %}">
+</head>
+
+<body>
+
+    <div class="container-custom">
+        <div class="navbar-bottom animate__animated animate__zoomIn">
+            <div class="navbar-bottom-box">
+                <div class="navbar-bottom-content">
+                    <div class="row no-gutters text-center">
+                        <div class="col">
+                            <a href="#" class="btn p-0">
+                                <div class="col p-0">
+                                    <img src="{% static 'reseller/assets/img/Icons/011-house.png' %}">
+                                </div>
+                                <div class="col p-0">
+                                    <p class="m-0">
+                                        Home
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-5">
+                            <a href="{% url 'webcosmoappreseller:belanjaproduk' %}" class="btn p-0">
+                                <div class="col p-0">
+                                    <img src="{% static 'reseller/assets/img/Icons/Group 107.png' %}"
+                                        class=" belanja-produk-animate animate__animated animate__shakeX">
+                                </div>
+                                <div class="col p-0">
+                                    <p class="m-0">
+                                        Belanja Produk
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="{% url 'webcosmoappreseller:reward' %}" class="btn p-0">
+                                <div class="col p-0">
+                                    <img src="{% static 'reseller/assets/img/Icons/Group 108.png' %}">
+                                </div>
+                                <div class="col p-0">
+                                    <p class="m-0">
+                                        Reward
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-1">
+            <div class="container">
+                <div class="navbar-box">
+                    <nav class="navbar navbar-dark text-right row no-gutters px-0">
+                        <form class="form-inline col">
+                            <div class="input-group animate__animated animate__fadeInLeft">
+                                <span class="input-group-text input-search">
+                                    <img src="{% static 'reseller/assets/img/Icons/Mask Group 6.png' %}" alt=""
+                                        class="img-fluid img-search">
+                                </span>
+                                <input type="text" class="form-control input-fixing" id="" placeholder="Cari Produk">
+                            </div>
+                        </form>
+                        <div class="col d-flex justify-content-end">
+                            <div class="row">
+                                <div class="section-1-icon">
+                                    <ul class="d-flex justify-content-center align-items-center">
+                                        <li class="animate__animated animate__fadeInRight">
+                                            <a class="btn p-0" href="#">
+                                                <img src="{% static 'reseller/assets/img/Icons/qrcode.png' %}" alt="">
+                                            </a>
+                                        </li>
+                                        <li class="animate__animated animate__fadeInRight duration-3">
+                                            <a class="btn p-0" href="#">
+                                                <img src="{% static 'reseller/assets/img/Icons/001-mail inbox app.png' %}"
+                                                    alt="">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <button type="button"
+                                    class="btn p-0 d-flex justify-content-center align-items-center animate__animated animate__fadeInRight duration-4"
+                                    onclick="openNav()">
+                                    <img src="{% static 'reseller/assets/img/Icons/menu-1.png' %}" alt="">
+                                </button>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div id="mySidenav" class="nav-setting">
+                {% include 'reseller/sidebar.html' with objects=reseller %}
+            </div>
+            <div class="container">
+                <div class="section-1-main">
+                    <div class="section-1-content animate__animated animate__fadeInUp">
+                        <h1 class="">
+                            Hallo, Selamat Datang {{ reseller.nama_depan }} {{ reseller.nama_belakang }}!
+                        </h1>
+                        <p class="mb-0 animate__animated animate__fadeInUp duration-3">
+                            Dapatkan kebutuhan kesehatan hanya dengan sekali sentuh.
+                        </p>
+                    </div>
+
+                    <div class="banner-slide">
+                        <div class="owl-carousel owl-theme">
+                            <div class="item mb-2">
+                                <div class="banner-slide-main d-flex justify-content-center align-item-center">
+                                    <p class="text-center d-flex justify-content-center align-item-center my-auto">
+                                        Banner
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="item mb-2">
+                                <div class="banner-slide-main d-flex justify-content-center align-item-center">
+                                    <p class="text-center d-flex justify-content-center align-item-center my-auto">
+                                        Banner
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="item mb-2">
+                                <div class="banner-slide-main d-flex justify-content-center align-item-center">
+                                    <p class="text-center d-flex justify-content-center align-item-center my-auto">
+                                        Banner
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-2">
+            <div class="container">
+                <div class="section-2-main">
+                    <div class="box-komisi">
+                        <div class="box-komisi-main animate__animated animate__fadeInUp">
+                            <div class="box-komisi-content">
+                                <h1 class="mt-2">
+                                    Komisi <span class="float-right">Rp. 20.000.000,-</span>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-2-fitur">
+                        <div class="section-2-fitur-main">
+                            <div class="row d-sm justify-content-center section-2-fitur-content">
+                                <div class="d-flex flex-column col p-0 animate__animated animate__fadeInUp duration-3">
+                                    <a class="btn p-0" href="">
+                                        <div class="col d-flex align-items-center justify-content-center p-0 mx-auto">
+                                            <div
+                                                class="dot-fitur d-flex align-items-center justify-content-center text-center">
+                                                <img src="{% static 'reseller/assets/img/Icons/Group 117.png' %}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col fitur-name p-0 text-center">
+                                            <h1>
+                                                Jual Barang
+                                            </h1>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="d-flex flex-column col p-0 animate__animated animate__fadeInUp duration-4">
+                                    <a class="btn p-0" href="">
+                                        <div class="col d-flex align-items-center justify-content-center p-0 mx-auto">
+                                            <div
+                                                class="dot-fitur d-flex align-items-center justify-content-center text-center">
+                                                <img src="{% static 'reseller/assets/img/Icons/Group 118.png' %}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col fitur-name p-0 text-center">
+                                            <h1>
+                                                Riwayat
+                                            </h1>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="d-flex flex-column col p-0 animate__animated animate__fadeInUp duration-5">
+                                    <a class="btn p-0" href="{% url 'webcosmoappreseller:statistik' %}">
+                                        <div class="col d-flex align-items-center justify-content-center p-0 mx-auto">
+                                            <div
+                                                class="dot-fitur d-flex align-items-center justify-content-center text-center">
+                                                <img src="{% static 'reseller/assets/img/Icons/Group 119.png' %}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col fitur-name p-0 text-center">
+                                            <h1>
+                                                Statistik
+                                            </h1>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="d-flex flex-column col p-0 animate__animated animate__fadeInUp duration-6">
+                                    <a class="btn p-0" href="{% url 'webcosmoappreseller:listpesanan' %}">
+                                        <div class="col d-flex align-items-center justify-content-center p-0 mx-auto">
+                                            <div
+                                                class="dot-fitur d-flex align-items-center justify-content-center text-center">
+                                                <img src="{% static 'reseller/assets/img/Icons/Group 120.png' %}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col fitur-name p-0 text-center">
+                                            <h1>
+                                                Pemesanan
+                                            </h1>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-3">
+            <div class="container">
+                <div class="section-3-main">
+                    <div class="section-3-header">
+                        <div class="row no-gutters">
+                            <div class="col d-flex align-items-center animate__animated animate__fadeInUp">
+                                <h1 class="m-0">
+                                    Produk terbaru...
+                                </h1>
+                            </div>
+                            <div class="col animate__animated animate__fadeInUp duration-3">
+                                <a href="" class="btn btn-promo float-right">
+                                    Hot Promo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-3-content">
+                        <div class="row">
+                            {% for p in produk %}
+                            <div class="col-6 card-promo-box animate__animated animate__zoomIn duration-4">
+                                <a href="/detail/{{ p.id_produk }}">
+                                    <div class="card card-promo">
+                                        <img class="card-img-top" src="{{ p.id_detail.thumb_image.url }}">
+                                        <div class="card-promo-name">
+                                            <h1>
+                                                {{ p.nama_produk }}
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="selebihnya animate__animated animate__fadeInUp duration-5">
+                            <div class="selebihnya-content">
+                                <a href="{% url 'webcosmoappreseller:belanjaproduk' %}"
+                                    class="btn btn-selebihnya btn-block d-flex align-items-center justify-content-center">
+                                    Lihat Selebihnya
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-4">
+            <div class="container">
+                <div class="section-4-main">
+                    <div class="banner-info animate__animated animate__fadeInUp">
+                        <div class="banner-info-main d-flex justify-content-center align-item-center">
+                            <p class="text-center d-flex justify-content-center align-item-center my-auto">
+                                Banner Info
+                            </p>
+                        </div>
+                    </div>
+                    <div class="banner-info animate__animated animate__fadeInUp duration-3">
+                        <div class="banner-info-main d-flex justify-content-center align-item-center">
+                            <p class="text-center d-flex justify-content-center align-item-center my-auto">
+                                Banner Info
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-5">
+            <div class="container">
+                <div class="section-5-main text-center animate__animated animate__fadeInUp">
+                    <h1>
+                        Tentang
+                    </h1>
+                    <p>
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea...
+                    </p>
+                    <a href="" class="btn btn-baca">
+                        Baca Selengkapnya
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-6">
+            <div class="container">
+                <div class="section-6-main d-flex justify-content-center">
+                    <div class="row">
+                        <div class="col">
+                            <a href="" class="btn btn-b-indo">
+                                Indonesia
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="" class="btn btn-b-ing">
+                                English
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="foother text-center">
+                    <p>
+                        2021-2022 &copy; Cosmolite <br>
+                        Version App v1.0.0-alpha
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'reseller/assets/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'reseller/assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'reseller/assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'reseller/assets/js/script.js' %}"></script>
+</body>
+
+</html>
+
+<!-- 
+    <div class="container-custom">
+        <div class="splash-content text-center">
+            <img src="{% static 'reseller/assets/img/logo" class="img-splash" alt="">
+
+            <div class="text-center text-splash">
+                <span>Selamat Datang</span>
+                <p>Silahkan Pilih</p>
+            </div>
+
+            <div class="form-splash mt-5 mb-3">
+                <a href="login.html" class="btn btn-dark btn-panjang btn-block">Login</a>
+                <button type="button" id="masuk_tamu" class="btn btn-outline-dark btn-panjang-outline btn-block">Masuk sebagai tamu</button>
+            </div>
+
+            <div class="footer">
+                <span>v1.0 Created and Development by <a href="#">Rizki Fauzi</a></span>
+            </div>
+        </div>
+    </div>
+-->

@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cosmolite | List Pesanan</title>
+    <link rel="shortcut icon" href="{% static 'reseller/assets/img/logo-fav.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/owl.theme.default.css' %}">
+</head>
+
+<body>
+
+    <div class="container-custom">
+        <nav class="navbar navbar-cari-produk sticky-top" id="navbar">
+            <div class="col d-flex justify-content-start align-items-center p-0">
+                <a href="{% url 'webcosmoappreseller:dashboard' %}" class="btn p-0">
+                    <img src="{% static 'reseller/assets/img/Icons/Component 4 – 26.png' %}">
+                </a>
+                <div class="input-group">
+                    <span class="input-group-text input-search">
+                        <img src="{% static 'reseller/assets/img/Icons/Mask Group 6.png' %}" alt=""
+                            class="img-fluid img-search">
+                    </span>
+                    <input type="text" class="form-control input-fixing" id="" placeholder="Cari Produk">
+                </div>
+            </div>
+            <div class="col-4 d-flex justify-content-end">
+                <div class="row">
+                    <div class="nav-header-icon">
+                        <div class="col p-0">
+                            <ul class="d-flex justify-content-center align-items-center m-0">
+                                <li>
+                                    <a href="{% url 'webcosmoappreseller:keranjang' %}" class="btn p-0 btn-k">
+                                        <span
+                                            class="bandage-keranjang d-flex justify-content-center align-items-center">+9</span>
+                                        <img src="{% static 'reseller/assets/img/Icons/Group 121.png' %}" class="">
+                                    </a>
+                                </li>
+                                <li>
+                                    <button type="button" onclick="openNav()" class=" btn p-0 m-0">
+                                        <img src="{% static 'reseller/assets/img/Icons/menu.png' %}">
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="section-1-list-pesanan">
+            <div class="container">
+                <div class="section-1-list-pesanan-main">
+                    <div class="header-list-pesanan">
+                        <div class="row no-gutters">
+                            <div class="col d-flex justify-content-start align-items-center">
+                                <h1>
+                                    Pesanan
+                                </h1>
+                            </div>
+                            <div class="col d-flex justify-content-end align-items-center">
+                                <a href="" class="btn btn-lp-filter float-right">
+                                    <img src="{% static 'reseller/assets/img/Icons/Group 140.png' %}" alt="">
+                                    Filter
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-pesanan">
+                        <div class="row no-gutters">
+                            <div class="col col-lg-3">
+                                <img src="{% static 'reseller/assets/img/user.jpg' %}" alt=""
+                                    class="img-card-pesanan img-fluid">
+                            </div>
+                            <div class="col col-lg ml-3 d-flex flex-column align-items-start">
+                                <h1>
+                                    Nama Pesanan
+                                </h1>
+                                <p>
+                                    Lorem Ipsum dorLorem Ipsum dorLorem
+                                    Ipsum dorLorem Ipsum dorLorem Ipsum
+                                    dorLorem Ipsum dorLorem Ipsum
+                                    dorLoremLorem Ipsum...
+                                </p>
+                                <div class="flex-grow-1 d-flex justify-content-end">
+                                    <a href="#" class="btn btn-pesanan">
+                                        Pesanan
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="pesanan-date text-right">
+                            Dec 10, 2020 <strong> 07.00AM</strong>
+                        </p>
+                    </div>
+                    <div class="card-pesanan">
+                        <div class="row no-gutters">
+                            <div class="col col-lg-3">
+                                <img src="{% static 'reseller/assets/img/user.jpg' %}" alt=""
+                                    class="img-card-pesanan img-fluid">
+                            </div>
+                            <div class="col col-lg ml-3 d-flex flex-column align-items-start">
+                                <h1>
+                                    Nama Pesanan
+                                </h1>
+                                <p>
+                                    Lorem Ipsum dorLorem Ipsum dorLorem
+                                    Ipsum dorLorem Ipsum dorLorem Ipsum
+                                    dorLorem Ipsum dorLorem Ipsum
+                                    dorLoremLorem Ipsum...
+                                </p>
+                                <div class="flex-grow-1 d-flex justify-content-end">
+                                    <a href="#" class="btn btn-pesanan">
+                                        Pesanan
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="pesanan-date text-right">
+                            Dec 10, 2020 <strong> 07.00AM</strong>
+                        </p>
+                    </div>
+                    <div class="card-pesanan">
+                        <div class="row no-gutters">
+                            <div class="col col-lg-3">
+                                <img src="{% static 'reseller/assets/img/user.jpg' %}" alt=""
+                                    class="img-card-pesanan img-fluid">
+                            </div>
+                            <div class="col col-lg ml-3 d-flex flex-column align-items-start">
+                                <h1>
+                                    Nama Pesanan
+                                </h1>
+                                <p>
+                                    Lorem Ipsum dorLorem Ipsum dorLorem
+                                    Ipsum dorLorem Ipsum dorLorem Ipsum
+                                    dorLorem Ipsum dorLorem Ipsum
+                                    dorLoremLorem Ipsum...
+                                </p>
+                                <div class="flex-grow-1 d-flex justify-content-end">
+                                    <a href="#" class="btn btn-pesanan">
+                                        Pesanan
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="pesanan-date text-right">
+                            Dec 10, 2020 <strong> 07.00AM</strong>
+                        </p>
+                    </div>
+                    <div class="card-pesanan">
+                        <div class="row no-gutters">
+                            <div class="col col-lg-3">
+                                <img src="{% static 'reseller/assets/img/user.jpg' %}" alt=""
+                                    class="img-card-pesanan img-fluid">
+                            </div>
+                            <div class="col col-lg ml-3 d-flex flex-column align-items-start">
+                                <h1>
+                                    Nama Pesanan
+                                </h1>
+                                <p>
+                                    Lorem Ipsum dorLorem Ipsum dorLorem
+                                    Ipsum dorLorem Ipsum dorLorem Ipsum
+                                    dorLorem Ipsum dorLorem Ipsum
+                                    dorLoremLorem Ipsum...
+                                </p>
+                                <div class="flex-grow-1 d-flex justify-content-end">
+                                    <a href="#" class="btn btn-pesanan">
+                                        Pesanan
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="pesanan-date text-right">
+                            Dec 10, 2020 <strong> 07.00AM</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'reseller/assets/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'reseller/assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'reseller/assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'reseller/assets/js/script.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,394 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cosmolite | Atur Akun</title>
+    <link rel="shortcut icon" href="{% static '/reseller/assets/img/logo-fav.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static '/reseller/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/reseller/assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static '/reseller/assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static '/reseller/assets/css/owl.theme.default.css' %}">
+    <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.2/css/fileinput.min.css" media="all"
+        rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+    <div class="container-custom">
+        <nav class="navbar navbar-cari-produk sticky-top" id="navbar">
+            <div class="col d-flex justify-content-start align-items-center p-0">
+                <a href="{% url 'webcosmoappreseller:dashboard' %}" class="btn p-0">
+                    <img src="{% static '/reseller/assets/img/Icons/Component 4 – 26.png' %}">
+                </a>
+                <h1 class="">
+                    Atur Akun
+                </h1>
+            </div>
+        </nav>
+        <div class="section-1-atur">
+            <div class="container">
+                <div class="section-1-atur-main">
+                    <div class="ale">
+
+                    </div>
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div {% if message.tags == 'error' %} class="alert alert-danger" {% else %}
+                        class="alert alert-success" {% endif %}>
+                        <div>
+                            {{ message }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    <h1 class="data-diri">
+                        Data Diri
+                    </h1>
+                    <div class="row no-gutters">
+                        <div class="col d-flex justify-content-start align-items-center">
+                            <img src="{{ reseller.dir_image.url }}" class="rounded-circle img-atur-akun img-fluid">
+                            <div class="position-circle">
+                                <div data-toggle="modal" data-target="#editFoto"
+                                    class="atur-circle d-flex justify-content-center align-items-center">
+                                    <img src="{% static '/reseller/assets/img/Icons/Mask Group 12.png' %}">
+                                </div>
+                            </div>
+                            <div class="name-atur-akun">
+                                <h1>
+                                    {{ reseller.nama_depan }} {{ reseller.nama_belakang }}
+                                </h1>
+                                <p>
+                                    Reseller
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form action="{% url 'webcosmoappreseller:changereseller' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="section-2-atur">
+                        <div class="section-2-atur-main">
+                            <div class="section-2-atur-content">
+                                <div class="input-group">
+                                    <input type="text" name="nama_depan" required class="form-control img-atur" id=""
+                                        placeholder="Nama Depan" value="{{ reseller.nama_depan }}">
+                                    <span class="input-group-text input-atur">
+                                        <img src="{% static '/reseller/assets/img/Icons/Mask Group 8.png' %}" alt=""
+                                            class="img-fluid img-search">
+                                    </span>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" name="nama_belakang" required class="form-control img-atur" id=""
+                                        placeholder="Nama Belakang" value="{{ reseller.nama_belakang }}">
+                                    <span class="input-group-text input-atur">
+                                        <img src="{% static '/reseller/assets/img/Icons/Mask Group 8.png' %}" alt=""
+                                            class="img-fluid img-search">
+                                    </span>
+                                </div>
+                                <div class="input-group">
+                                    {% if detail.tanggal_lahir == None %}
+                                    <input type="date" name="tanggal_lahir" required class="form-control img-atur" id=""
+                                        placeholder="Tangal Lahir">
+                                    {% else %}
+                                    <input type="date" required class="form-control img-atur" id=""
+                                        placeholder="Tangal Lahir" value="{{ detail.tanggal_lahir }}" disabled>
+                                    {% endif %}
+                                    <span class="input-group-text input-atur">
+                                        <img src="{% static '/reseller/assets/img/Icons/Mask Group 8.png' %}" alt=""
+                                            class="img-fluid img-search">
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Alamat</label>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <button type="button" data-toggle="modal" data-target="#listAlamat"
+                                                class="btn btn-block btn-ganti-data-diri">
+                                                List Alamat
+                                            </button>
+                                        </div>
+                                        <div class="col-sm">
+                                            <button type="button" data-toggle="modal" data-target="#tambahAlamat"
+                                                class="btn btn-block btn-ganti-data-diri">
+                                                Tambah Alamat
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="">NIK</label>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            {% if detail.id_nik_id == Null %}
+                                            <button type="button" data-toggle="modal" data-target="#tambahNik"
+                                                class="btn btn-block btn-ganti-data-diri">
+                                                Upload NIK
+                                            </button>
+                                            {% else %}
+                                            <div class="btn btn-block btn-ganti-data-diri-disable" disabled>
+                                                KTP Sudah Diupload
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="">Akun Bank</label>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <button type="button" data-toggle="modal" data-target="#tambahBank"
+                                                class="btn btn-block btn-ganti-data-diri">
+                                                Tambah Akun Bank
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gdd">
+                            <button type="submit" class="btn btn-block btn-ganti-data-diri">
+                                Ganti Data Diri
+                            </button>
+                        </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal Edit Photo -->
+        <div class="modal fade" id="editFoto" tabindex="-1" role="dialog" aria-labelledby="editFotoLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editFotoLabel">Edit Foto</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="">Upload Foto</label>
+                            <input type="file" required name="foto_reseller" id="foto_reseller">
+                        </div>
+                    </div>
+                    <div class=" modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+                        <button type="button" class="btn btn-primary">Edit Foto</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal List Alamat -->
+    <div class="modal fade" id="listAlamat" tabindex="-1" role="dialog" aria-labelledby="listAlamatLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="listAlamatLabel">List Alamat</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {% for a in alamat %}
+                    <div class="card mt-2">
+                        <div class="card-body">
+                            <h5>{{ a.label }}</h5>
+                            <p class="mb-0">{{ reseller.nama_depan }} {{ reseller.nama_belakang }}
+                            </p>
+                            <span>{{ reseller.no_telp }}</span> <br>
+                            <span>{{ a.kotakab }}, {{ a.kecamatan }}, {{ a.kelurahan }} - {{ a.provinsi }}</span> <br>
+                            <span> {{ a.alamat_lengkap }} </span><br>
+                            <span> {{ a.kodepos }}</span>
+                            <div class="float-right">
+                                <a href="#">Edit Alamat</a>
+                                <a href="#" class="ml-2">Hapus Alamat</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Tambah Alamat -->
+    <div class="modal fade" id="tambahAlamat" tabindex="-1" role="dialog" aria-labelledby="tambahAlamatLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tambahAlamatLabel">Tambah Alamat</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="">Label</label>
+                        <input type="text" name="label" class="form-control" id="label" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Provinsi</label>
+                        <select name="provinsi" class="form-control" id="provinsi" required>
+                            <option value="">--- Pilih Provinsi ---</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Kota/Kabupaten</label>
+                        <select name="kotakab" class="form-control" id="kotakab" required>
+                            <option value="">--- Pilih Kota/Kabupaten ---</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Kecamatan</label>
+                        <select name="kecamatan" class="form-control" id="kecamatan" required>
+                            <option value="">--- Pilih Kecamatan ---</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Kelurahan</label>
+                        <select name="kelurahan" class="form-control" id="kelurahan" required>
+                            <option value="">--- Pilih Kelurahan ---</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Kode Pos</label>
+                        <input type="number" name="kodepos" id="kodepos" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Alamat Lengkap</label>
+                        <textarea name="alamat_lengkap" class="form-control" id="alamat_lengkap" cols="30" rows="10"
+                            required></textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+                    <button type="button" id="tambahalamat" class="btn btn-primary">Tambah Alamat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Add NIK -->
+    <div class="modal fade" id="tambahNik" tabindex="-1" role="dialog" aria-labelledby="tambahNikLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tambahNikLabel">Tambah NIK</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{% url 'webcosmoappreseller:addnik' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="">Masukan Nomor NIK</label>
+                            <input type="number" required class="form-control" name="nik">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Upload Foto KTP</label>
+                            <input type="file" required name="foto_nik" id="nik">
+                        </div>
+                    </div>
+                    <div class=" modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+                        <button type="submit" class="btn btn-primary">Tambah NIK</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Tambah Bank -->
+    <div class="modal fade" id="tambahBank" tabindex="-1" role="dialog" aria-labelledby="tambahBankLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tambahBankLabel">Tambah Akun Bank</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{% url 'webcosmoappreseller:addbank' %}" method="POST">
+                    <div class="modal-body">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="">Nama Bank</label>
+                            <select name="nama_bank" class="form-control" id="">
+                                <option value="">--- Pilih Nama Bank ---</option>
+                                <option value="0">BCA</option>
+                                <option value="1">Mandiri</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">No Rekening</label>
+                            <input type="number" name="no_rekening" class="form-control">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+                        <button type="submit" class="btn btn-primary">Tambah Bank</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static '/reseller/assets/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static '/reseller/assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/reseller/assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static '/reseller/assets/js/script.js' %}"></script>
+    <!-- piexif.min.js is needed for auto orienting image files OR when restoring exif data in resized images and when you
+    wish to resize images before upload. This must be loaded before fileinput.min.js -->
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.2/js/plugins/piexif.min.js"
+        type="text/javascript"></script>
+
+    <!-- sortable.min.js is only needed if you wish to sort / rearrange files in initial preview. 
+    This must be loaded before fileinput.min.js -->
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.2/js/plugins/sortable.min.js"
+        type="text/javascript"></script>
+
+    <!-- bootstrap.bundle.min.js below is needed if you wish to zoom and preview file content in a detail modal
+    dialog. bootstrap 5.x or 4.x is supported. You can also use the bootstrap js 3.3.x versions. -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+    </script>
+
+    <!-- the main fileinput plugin script JS file -->
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.2/js/fileinput.min.js"></script>
+
+    <!-- following theme script is needed to use the Font Awesome 5.x theme (`fas`). Uncomment if needed. -->
+    <!-- script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.2/themes/fas/theme.min.js"></script -->
+
+    <!-- optionally if you need translation for your language then include the locale file as mentioned below (replace LANG.js with your language locale) -->
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.2/js/locales/LANG.js"></script>
+    <script>
+        $("#foto_reseller").fileinput({
+            'showUpload': false,
+            'previewFileType': 'any'
+        });
+
+
+        $("#nik").fileinput({
+            'showUpload': false,
+            'previewFileType': 'any'
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cosmolite | Join & Login</title>
+    <link rel="shortcut icon" href="{% static 'reseller/assets/img/logo-fav.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/owl.theme.default.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/animate.css' %}">
+</head>
+
+<body>
+
+    <div class="container-custom">
+        <div class="section-1-regjoin">
+            <div class="container">
+                <div class="section-1-regjoin-main">
+                    <div
+                        class="regjoin-main-content d-flex align-items-end justify-content-center animate__animated animate__zoomIn">
+                        <img src="{% static 'reseller/assets/img/logo.png' %}" alt="" class="img-regjoin">
+                    </div>
+                    <div class="regjoin-text">
+                        <h1 class="animate__animated animate__fadeInUp duration-3">
+                            Hallo Selamat Datang
+                            Di Cosmolite
+                        </h1>
+                        <p class="animate__animated animate__fadeInUp duration-4">
+                            Menjadi Mitra dan Reseller Dengan Mudah !
+                        </p>
+                        <small class="text-danger">* Belum siap untuk digunakan kepada user!!</small>
+                    </div>
+
+                    <div class="button-regjoin animate__animated animate__fadeInUp duration-5">
+
+                        <a href="{% url 'webcosmoappreseller:register' %}" class="btn btn-block btn-join-2">
+                            Join Us
+                        </a>
+                        <a href="{% url 'webcosmoappreseller:login' %}" class="btn btn-block btn-login-2">
+                            Login
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="foother text-center mt-5">
+                <p>
+                    2021-2022 &copy; Cosmolite <br>
+                    Version App v1.0.0-alpha
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="{% static 'reseller/assets/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'reseller/assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'reseller/assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'reseller/assets/js/script.js' %}"></script>
+</body>
+
+</html>

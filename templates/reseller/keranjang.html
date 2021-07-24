@@ -1,0 +1,331 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cosmolite | Keranjang</title>
+    <link rel="shortcut icon" href="{% static 'reseller/assets/img/logo-fav.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/owl.theme.default.css' %}">
+</head>
+
+<body>
+
+    <div class="container-custom">
+        <nav class="navbar navbar-cari-produk sticky-top" id="navbar">
+            <div class="col d-flex justify-content-start align-items-center p-0">
+                <a href="{% url 'webcosmoappreseller:belanjaproduk' %}" class="btn p-0">
+                    <img src="{% static 'reseller/assets/img/Icons/Component 4 – 26.png' %}">
+                </a>
+                <h1 class="">
+                    Keranjang
+                </h1>
+            </div>
+            <div class="col-4 d-flex justify-content-end">
+                <div class="row">
+                    <div class="nav-header-icon">
+                        <div class="col p-0">
+                            <ul class="d-flex justify-content-center align-items-center m-0">
+                                <li>
+                                    <button type="button" onclick="openNav()" class=" btn p-0 m-0">
+                                        <img src="{% static 'reseller/assets/img/Icons/menu.png' %}">
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div id="mySidenav" class="nav-setting">
+            {% include 'reseller/sidebar.html' with objects=reseller %}
+        </div>
+        <div class="section-1-keranjang">
+            <div class="container">
+                <div class="section-1-keranjang-main">
+                    <div class="form-check">
+                        <input class="form-check-input cb-all" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label pl-3" for="defaultCheck1">
+                            Pilih Semua Barang
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-2-keranjang">
+            <div class="container">
+                <div class="section-2-keranjang-main">
+                    <div class="box-keranjang">
+                        <div class="col m-0 p-0">
+                            <div class="row no-gutters keranjang-parent">
+                                <div class="col-1">
+                                    <div class="form-check">
+                                        <input class="form-check-input cb-all" type="checkbox" value=""
+                                            id="defaultCheck1">
+                                    </div>
+                                </div>
+                                <div class="col img-keranjang">
+                                    <img src="{% static 'reseller/assets/img/user.jpg' %}" class="img-fluid">
+                                </div>
+                                <div class="col">
+                                    <div class="col px-0">
+                                        <h1>
+                                            Nama Produk
+                                        </h1>
+                                    </div>
+                                    <div class="col px-0">
+                                        <p>
+                                            Rp. 20.000.000,-
+                                        </p>
+                                    </div>
+                                    <div class="col px-0">
+                                        <div class="form-group">
+                                            <textarea class="form-control ta" id="exampleFormControlTextarea1" rows="0"
+                                                placeholder="">Tulis catatan untuk barang ini</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col p-0 m-0">
+                            <div class="keranjang-icon">
+                                <ul class="float-right">
+                                    <li>
+                                        <a href="#" class="btn p-0 btn-hapus">
+                                            <img src="{% static 'reseller/assets/img/Icons/Mask Group 9.png' %}"
+                                                class="ss">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="btn p-0 btn-kurang">
+                                            <img src="{% static 'reseller/assets/img/Icons/Mask Group 11.png' %}">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <input class="form-control input-disable input-total text-center" value=""
+                                            disabled>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="btn p-0 btn-tambah">
+                                            <img src="{% static 'reseller/assets/img/Icons/Mask Group 10.png' %}">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-keranjang">
+                        <div class="col m-0 p-0">
+                            <div class="row no-gutters keranjang-parent">
+                                <div class="col-1">
+                                    <div class="form-check">
+                                        <input class="form-check-input cb-all" type="checkbox" value=""
+                                            id="defaultCheck1">
+                                    </div>
+                                </div>
+                                <div class="col img-keranjang">
+                                    <img src="{% static 'reseller/assets/img/user.jpg' %}" class="img-fluid">
+                                </div>
+                                <div class="col">
+                                    <div class="col px-0">
+                                        <h1>
+                                            Nama Produk
+                                        </h1>
+                                    </div>
+                                    <div class="col px-0">
+                                        <p>
+                                            Rp. 20.000.000,-
+                                        </p>
+                                    </div>
+                                    <div class="col px-0">
+                                        <div class="form-group">
+                                            <textarea class="form-control ta" id="exampleFormControlTextarea1" rows="5"
+                                                placeholder="">Tulis catatan untuk barang ini</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col p-0 m-0">
+                            <div class="keranjang-icon">
+                                <ul class="float-right">
+                                    <li>
+                                        <a href="" class="btn">
+                                            <img src="{% static 'reseller/assets/img/Icons/Mask Group 9.png' %}"
+                                                class="ss">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="" class="btn">
+                                            <img src="{% static 'reseller/assets/img/Icons/Mask Group 11.png' %}">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <input class="form-control">
+                                    </li>
+                                    <li>
+                                        <a href="" class="btn">
+                                            <img src="{% static 'reseller/assets/img/Icons/Mask Group 10.png' %}">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-keranjang">
+                        <div class="col m-0 p-0">
+                            <div class="row no-gutters keranjang-parent">
+                                <div class="col-1">
+                                    <div class="form-check">
+                                        <input class="form-check-input cb-all" type="checkbox" value=""
+                                            id="defaultCheck1">
+                                    </div>
+                                </div>
+                                <div class="col img-keranjang">
+                                    <img src="{% static 'reseller/assets/img/user.jpg' %}" class="img-fluid">
+                                </div>
+                                <div class="col">
+                                    <div class="col px-0">
+                                        <h1>
+                                            Nama Produk
+                                        </h1>
+                                    </div>
+                                    <div class="col px-0">
+                                        <p>
+                                            Rp. 20.000.000,-
+                                        </p>
+                                    </div>
+                                    <div class="col px-0">
+                                        <div class="form-group">
+                                            <textarea class="form-control ta" id="exampleFormControlTextarea1" rows="5"
+                                                placeholder="">Tulis catatan untuk barang ini</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col p-0 m-0">
+                            <div class="keranjang-icon">
+                                <ul class="float-right">
+                                    <li>
+                                        <a href="" class="btn">
+                                            <img src="{% static 'reseller/assets/img/Icons/Mask Group 9.png' %}"
+                                                class="ss">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="" class="btn">
+                                            <img src="{% static 'reseller/assets/img/Icons/Mask Group 11.png' %}">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <input class="form-control">
+                                    </li>
+                                    <li>
+                                        <a href="" class="btn">
+                                            <img src="{% static 'reseller/assets/img/Icons/Mask Group 10.png' %}">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-keranjang">
+                        <div class="col m-0 p-0">
+                            <div class="row no-gutters keranjang-parent">
+                                <div class="col-1">
+                                    <div class="form-check">
+                                        <input class="form-check-input cb-all" type="checkbox" value=""
+                                            id="defaultCheck1">
+                                    </div>
+                                </div>
+                                <div class="col img-keranjang">
+                                    <img src="{% static 'reseller/assets/img/user.jpg' %}" class="img-fluid">
+                                </div>
+                                <div class="col">
+                                    <div class="col px-0">
+                                        <h1>
+                                            Nama Produk
+                                        </h1>
+                                    </div>
+                                    <div class="col px-0">
+                                        <p>
+                                            Rp. 20.000.000,-
+                                        </p>
+                                    </div>
+                                    <div class="col px-0">
+                                        <div class="form-group">
+                                            <textarea class="form-control ta" id="exampleFormControlTextarea1" rows="5"
+                                                placeholder="">Tulis catatan untuk barang ini</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col p-0 m-0">
+                            <div class="keranjang-icon">
+                                <ul class="float-right">
+                                    <li>
+                                        <a href="" class="btn">
+                                            <img src="{% static 'reseller/assets/img/Icons/Mask Group 9.png' %}"
+                                                class="ss">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="" class="btn">
+                                            <img src="{% static 'reseller/assets/img/Icons/Mask Group 11.png' %}">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <input class="form-control">
+                                    </li>
+                                    <li>
+                                        <a href="" class="btn">
+                                            <img src="{% static 'reseller/assets/img/Icons/Mask Group 10.png' %}">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-3-keranjang">
+            <div class="container">
+                <div class="section-3-keranjang-main">
+                    <div class="row no-gutters">
+                        <div class="col p-0 m-0">
+                            <div class="form-group bungkus pr-3">
+                                <label>
+                                    Total Harga
+                                </label>
+                                <input class="form-control input-disable" disabled>
+                            </div>
+                        </div>
+                        <div class="col p-0 m-0">
+                            <a href="#" class="btn btn-checkout">
+                                Checkout <span>(0)</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'reseller/assets/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'reseller/assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'reseller/assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'reseller/assets/js/script.js' %}"></script>
+</body>
+
+</html>

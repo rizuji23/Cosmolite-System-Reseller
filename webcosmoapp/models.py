@@ -222,6 +222,9 @@ class Pemesanan(models.Model):
     status = models.CharField(max_length=100)
     tanggal = models.DateTimeField()
     tanggal_update = models.DateTimeField()
+    id_pengiriman = models.CharField(max_length=30, null=True)
+    id_bank = models.CharField(max_length=30, null=True)
+    id_alamat = models.CharField(max_length=30, null=True)
 
     def __str__(self):
         return self.invoice

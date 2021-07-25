@@ -33,5 +33,6 @@ urlpatterns = [
     path('getsubkategori/', viewsadmin.getsubkategori, name="getsubkategori"),
     path('changesubkategori/', viewsadmin.changesubkategori, name="changesubkategori"),
     path('deletesubkategori/', viewsadmin.deletesubkategori, name="deletesubkategori"),
-    path('addkurir/', viewsadmin.addkurir, name="addkurir")
+    path('blockreseller/', viewsadmin.blockreseller, name="blockreseller"),
+    path('addkurir/', viewsadmin.addkurir, name="addkurir"),
 ]

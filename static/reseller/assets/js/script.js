@@ -259,6 +259,7 @@ $(document).ready(function () {
 	var hg = harga.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
 	$('#hargas').text('Rp. ' + hg)
 
+	hitungtotal($('.qtys').val())
 
 	$('.btnminus').click(function () {
 		var $input = $('.qtys').val();
@@ -266,17 +267,65 @@ $(document).ready(function () {
 		count = count < 3 ? 3 : count;
 		$('.qtys').val(count);
 		$('.qtys').change();
+		$('#qty').val(count);
+		$('#qty').change();
+		hitungtotal(count)
 		return false;
-		hitungtotal()
 	});
 	$('.btnplus').click(function () {
 		var $input = $('.qtys').val();
 		$('.qtys').val(parseInt($('.qtys').val()) + 1);
+		$('#qty').val(parseInt($('.qtys').val()) + 1);
+		$('#qty').change();
 		$('.qtys').change();
+		hitungtotal(parseInt($('.qtys').val()) + 1)
 		return false;
 
-		hitungtotal()
 	});
+
+	function hitungtotal(count) {
+		var harga = $("#harga_produks").val()
+		var qty = count
+		var kurir = $('.ongkir').val()
+		var total = parseInt(harga) * parseInt(qty)
+		var total2 = total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+		var total3 = $('.total2').val(total)
+		$('.total2').val(total)
+		$('#totals').text("Rp " + total2)
+
+	}
+
+	function kurirtotal(ongkirs) {
+		var total = $('.total2').val()
+		var to = parseInt(total) + parseInt(ongkirs)
+		var total2 = to.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+		$('.total2').val(to)
+		$('#totals').text("Rp " + total2)
+		console.log(to)
+	}
+
+	$('.btnalamat').click(function () {
+		ids = $(this).attr('id')
+		$('#alamat').val(ids)
+		$('#dikirim').text($('.label').text())
+		$('#listAlamat').modal('hide');
+	})
+
+	$('.btnbank').click(function () {
+		ids = $(this).attr('id')
+
+		$('#pembayaran').val(ids)
+		$('#pembayaran2').text($('.nama_bank').text())
+		$('#listBank').modal('hide');
+	})
+
+	$('.btnkurir').click(function () {
+		ids = $(this).attr('id')
+		$('#pengiriman2').text($('.nama_kurir').text())
+		$('#pengiriman').val(ids)
+		kurirtotal($('.ongkir').val())
+		$('#listKurir').modal('hide');
+	})
 
 
 })

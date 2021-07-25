@@ -103,7 +103,7 @@ def authreseller(request):
         username = request.POST['username']
         password = request.POST['password']
         try:
-            akun = Reseller.objects.get(username=username)
+            akun = Reseller.objects.get(username=username, status='1')
             if check_password(password, akun.password):
                 request.session['username_reseller'] = username
                 return HttpResponseRedirect(reverse('webcosmoappreseller:dashboard'))
@@ -182,6 +182,32 @@ def changereseller(request):
                 messages.add_message(request, messages.SUCCESS, 'Gagal diedit!!')
                 return HttpResponseRedirect(reverse('webcosmoappreseller:aturakun'))
 
+        else:
+            if request.session.has_key("username_reseller"):
+                del request.session['username_reseller']
+                messages.add_message(request, messages.ERROR, 'Harus Login!!')
+                return HttpResponseRedirect(reverse('webcosmoapp:index'))
+            else:
+                messages.add_message(request, messages.ERROR, 'Harus Login!!')
+                return HttpResponseRedirect(reverse('webcosmoapp:index'))
+    else:
+        messages.add_message(request, messages.ERROR, '403 Forhibbiden')
+        return HttpResponseRedirect(reverse('webcosmoappreseller:login'))
+
+def editfoto(request):
+    if request.method == 'POST':
+        if request.session.has_key("username_reseller"):
+            username = request.session['username_reseller']
+            user = get_object_or_404(Reseller, username=username)
+            foto_reseller2 = request.FILES['foto_reseller']
+            if user:
+                user.dir_image = foto_reseller2
+                user.save()
+                messages.add_message(request, messages.SUCCESS, 'Foto Profil Sudah Diganti...')
+                return HttpResponseRedirect(reverse('webcosmoappreseller:aturakun'))
+            else:
+                messages.add_message(request, messages.ERROR, 'Gagal diedit!!')
+                return HttpResponseRedirect(reverse('webcosmoappreseller:aturakun'))
         else:
             if request.session.has_key("username_reseller"):
                 del request.session['username_reseller']

@@ -38,6 +38,41 @@ function deletebarang(ids) {
     })
 }
 
+function blokir(ids) {
+    csrf = $("[name='csrfmiddlewaretoken']").val();
+    Swal.fire({
+        title: 'Apakah anda yakin??',
+        text: "Akun reseller akan diblockir dari system!!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Iya'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: '/cosmoadmin/blockreseller/',
+                data: {
+                    'id': ids,
+                    'csrfmiddlewaretoken': csrf
+                },
+                method: 'POST',
+                success: function (data) {
+                    Swal.fire(
+                        'Diblockir!',
+                        'Akun reseller berhasil diblokir',
+                        'success'
+                    ).then((result) => {
+                        if (result.isConfirmed) {
+                            location.reload()
+                        }
+                    })
+                }
+            })
+        }
+    })
+}
+
 $(document).ready(function () {
     harga = $('.hargabarang').text()
     var hg = harga.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");

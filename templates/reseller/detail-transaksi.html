@@ -49,6 +49,7 @@
                                 <h1 class="mb-0 ">
                                     Rp. {{ p.harga_produk|intcomma }}
                                 </h1>
+                                <input type="hidden" id="harga_produks" value="{{ p.harga_produk }}">
                             </div>
                             <div class="col-sm">
                                 <div class="float-right">
@@ -103,8 +104,8 @@
                                 <h1 class="mb-0">
                                     Dikirim Ke :
                                 </h1>
-                                <p class="mb-0">
-                                    Alamat belum diisi
+                                <p class="mb-0" id="dikirim">
+                                    Isi Terlebih Dahulu
                                 </p>
                             </div>
                         </div>
@@ -122,8 +123,8 @@
                                 <h1 class="mb-0">
                                     Pembayaran Via :
                                 </h1>
-                                <p class="mb-0">
-                                    Pembayaran belum diisi
+                                <p class="mb-0" id="pembayaran2">
+                                    Isi Terlebih Dahulu
                                 </p>
                             </div>
                         </div>
@@ -141,8 +142,9 @@
                                 <h1 class="mb-0">
                                     Metode Pengiriman :
                                 </h1>
-                                <p class="mb-0">
-                                    Pilih metode pengiriman
+                                <p class="mb-0" id="pengiriman2">
+                                    Isi Terlebih Dahulu
+
                                 </p>
                             </div>
                         </div>
@@ -156,10 +158,10 @@
                     <div class="line-dt"></div>
                     <div class="box-total-dt animate__animated animate__fadeInUp duration-5">
                         <div class="box-total-dt-main">
+                            <input type="hidden" class="total2" id="">
                             <h1>
                                 Total
-                                <span class="float-right">
-                                    Rp. 20.000.000,-
+                                <span class="float-right" id="totals">
                                 </span>
                             </h1>
                         </div>
@@ -170,7 +172,6 @@
                             <input type="hidden" id="alamat">
                             <input type="hidden" id="pembayaran">
                             <input type="hidden" id="pengiriman">
-                            <input type="hidden" id="">
                             <button type="submit" class="btn btn-block btn-dt-checkout">
                                 Checkout
                             </button>
@@ -197,7 +198,7 @@
                     {% for a in alamat %}
                     <div class="card mt-2">
                         <div class="card-body">
-                            <h5>{{ a.label }}</h5>
+                            <h5 class="label">{{ a.label }}</h5>
                             <p class="mb-0">{{ reseller.nama_depan }} {{ reseller.nama_belakang }}
                             </p>
                             <span>{{ reseller.no_telp }}</span> <br>
@@ -205,7 +206,7 @@
                             <span> {{ a.alamat_lengkap }} </span><br>
                             <span> {{ a.kodepos }}</span>
                             <div class="float-right">
-                                <button type="button" class="btn btn-dt-ubah">
+                                <button type="button" id="{{ a.id_alamat }}" class="btn btn-dt-ubah btnalamat">
                                     Pilih Alamat
                                 </button>
                             </div>
@@ -234,14 +235,14 @@
                     <div class="card mt-2">
                         <div class="card-body">
                             {% if b.nama_bank == '0' %}
-                            <h5>BCA (Virtual Account)</h5>
+                            <h5 class="nama_bank">BCA (Virtual Account)</h5>
                             {% elif b.nama_bank == '1' %}
-                            <h5>Mandiri (Virtual Account)</h5>
+                            <h5 class="nama_bank">Mandiri (Virtual Account)</h5>
                             {% endif %}
                             <p class="mb-0 font-weight-bold">{{ reseller.nama_depan }} {{ reseller.nama_belakang }}</p>
                             <p class="mb-0">No Rekening : {{ b.no_rekening }}</p>
                             <div class="float-right">
-                                <button type="button" class="btn btn-dt-ubah">
+                                <button type="button" id="{{ b.id_bank }}" class="btn btn-dt-ubah btnbank">
                                     Pilih Bank
                                 </button>
                             </div>
@@ -270,12 +271,13 @@
                     {% for k in kurir %}
                     <div class="card mt-2">
                         <div class="card-body">
-                            <h5>{{ k.nama_kurir }}</h5>
+                            <h5 class="nama_kurir">{{ k.nama_kurir }}</h5>
                             <p class="mb-0 font-weight-bold">{{ k.jenis_pengiriman }}</p>
-                            <p class="mb-0">Estimasi : {{ k.estimasi }}</p>
-                            <p class="mb-0">Ongkir : {{ k.ongkir }}</p>
+                            <p class="mb-0">Estimasi : {{ k.estimasi }} Hari</p>
+                            <p class="mb-0">Ongkir : Rp. {{ k.ongkir|intcomma }}</p>
+                            <input type="hidden" class="ongkir" value="{{ k.ongkir }}">
                             <div class="float-right">
-                                <button type="button" class="btn btn-dt-ubah">
+                                <button type="button" id="{{ k.id_kurir }}" class="btn btn-dt-ubah btnkurir">
                                     Pilih Kurir
                                 </button>
                             </div>

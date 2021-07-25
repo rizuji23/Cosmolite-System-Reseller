@@ -461,8 +461,40 @@ def deletesubkategori(request):
         messages.add_message(request, messages.ERROR, '403 forhibidden')
         return HttpResponseRedirect(reverse('webcosmoapp:dashboard'))
 
+def blockreseller(request):
+    if request.method == 'POST':
+        if request.session.has_key('username'):
+            username = request.session['username']
+            user = get_object_or_404(User, username=username)
+            id_reseller = request.POST['id']
+            reseller = Reseller.objects.get(id_reseller=id_reseller)
+            if reseller:
+                reseller.status = '0'
+                reseller.save()
+                return HttpResponseRedirect(reverse('webcosmoapp:datareseller'))
+            else:
+                messages.add_message(request, messages.ERROR, 'Terjadi kesalahan pada menghapus data Produk!!')
+        else:
+            messages.add_message(request, messages.ERROR, 'Harus Login!!')
+            return HttpResponseRedirect(reverse('webcosmoapp:index'))
+    else:
+        messages.add_message(request, messages.ERROR, '403 forhibidden')
+        return HttpResponseRedirect(reverse('webcosmoapp:dashboard'))
+
 def data_reseller(request):
-    return render(request, 'cosmoadmin/datareseller.html')
+    if request.session.has_key("username"):
+        username = request.session['username']
+        users = get_object_or_404(User, username=username)
+        datareseller = Reseller.objects.filter(status='1')       
+        return render(request, 'cosmoadmin/datareseller.html', {'admin': users, 'datareseller':datareseller})
+    else:
+        if request.session.has_key("username"):
+            del request.session['username']
+            messages.add_message(request, messages.ERROR, 'Harus Login!!')
+            return HttpResponseRedirect(reverse('webcosmoapp:index'))
+        else:
+            messages.add_message(request, messages.ERROR, 'Harus Login!!')
+            return HttpResponseRedirect(reverse('webcosmoapp:index'))
 
 def tambah_reseller(request):
     return render(request, 'cosmoadmin/tambah-r.html')

@@ -51,7 +51,7 @@
                     <div class="row no-gutters">
                         <div class="col d-flex justify-content-start align-items-center">
                             <img src="{{ reseller.dir_image.url }}" class="rounded-circle img-atur-akun img-fluid">
-                            <div class="position-circle">
+                            <div class="position-circle" style="cursor: pointer;">
                                 <div data-toggle="modal" data-target="#editFoto"
                                     class="atur-circle d-flex justify-content-center align-items-center">
                                     <img src="{% static '/reseller/assets/img/Icons/Mask Group 12.png' %}">
@@ -142,10 +142,17 @@
                                     <label for="">Akun Bank</label>
                                     <div class="row">
                                         <div class="col-sm">
+                                            {% if detail.id_nik_id != Null %}
                                             <button type="button" data-toggle="modal" data-target="#tambahBank"
                                                 class="btn btn-block btn-ganti-data-diri">
                                                 Tambah Akun Bank
                                             </button>
+                                            {% else %}
+                                            <div class="btn btn-block btn-ganti-data-diri btnbanks" disabled>
+                                                Tambah Akun Bank
+                                            </div>
+                                            {% endif %}
+
                                         </div>
                                     </div>
                                 </div>
@@ -171,16 +178,20 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="">Upload Foto</label>
-                            <input type="file" required name="foto_reseller" id="foto_reseller">
+                    <form action="{% url 'webcosmoappreseller:editfoto' %}" enctype="multipart/form-data" method="POST">
+                        {% csrf_token %}
+
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="">Upload Foto</label>
+                                <input type="file" required name="foto_reseller" id="foto_reseller">
+                            </div>
                         </div>
-                    </div>
-                    <div class=" modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
-                        <button type="button" class="btn btn-primary">Edit Foto</button>
-                    </div>
+                        <div class=" modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+                            <button type="submit" class="btn btn-primary">Edit Foto</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -377,6 +388,8 @@
 
     <!-- optionally if you need translation for your language then include the locale file as mentioned below (replace LANG.js with your language locale) -->
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.2/js/locales/LANG.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+
     <script>
         $("#foto_reseller").fileinput({
             'showUpload': false,
@@ -388,6 +401,14 @@
             'showUpload': false,
             'previewFileType': 'any'
         });
+
+        $('.btnbanks').click(function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Data NIK Harus Diisi!!',
+            })
+        })
     </script>
 </body>
 

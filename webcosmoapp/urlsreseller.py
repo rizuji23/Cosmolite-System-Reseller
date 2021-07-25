@@ -27,5 +27,7 @@ urlpatterns = [
         path('listpesanan/', viewsreseller.listpemesanan, name="listpesanan"),
         path('keranjang/', viewsreseller.keranjang, name="keranjang"),
         path('reward/', viewsreseller.reward, name="reward"),
-        path('gantipassword/', viewsreseller.gantipassword, name="gantipassword")
+        path('gantipassword/', viewsreseller.gantipassword, name="gantipassword"),
+        path('editfoto/', viewsreseller.editfoto, name="editfoto")
+
 ]

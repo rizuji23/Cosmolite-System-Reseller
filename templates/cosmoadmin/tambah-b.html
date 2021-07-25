@@ -27,7 +27,7 @@
     <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.2/css/fileinput.min.css" media="all"
         rel="stylesheet" type="text/css" />
 
-
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -290,8 +290,9 @@
                                     <label for="" class="font-weight-bold">
                                         Deskripsi Barang <span class="text-danger">*</span>
                                     </label>
-                                    <textarea name="desk_barang" required class="form-control" id="" cols="30"
-                                        rows="10"></textarea>
+                                    <textarea id="summernote" name="desk_barang"></textarea>
+
+
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="font-weight-bold">
@@ -403,6 +404,8 @@
     <!-- optionally if you need translation for your language then include the locale file as mentioned below (replace LANG.js with your language locale) -->
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.2/js/locales/LANG.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
     <script>
         $('.uang').mask('000.000.000', {
             reverse: true
@@ -418,6 +421,10 @@
             'showUpload': false,
             'previewFileType': 'any'
 
+        });
+
+        $(document).ready(function () {
+            $('#summernote').summernote();
         });
     </script>
 

@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-9)o)3zp3h(6&+dj6z2hg!kkd)ne6z@r=nk=s_+&!bveb1)#f13
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['my.cosmolite.co.id']
+ALLOWED_HOSTS = ['my.cosmolite.co.id', 'localhost']
 
 
 # Application definition
@@ -80,8 +80,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'cosmolite',
-        'USER': 'marketing',
-        'PASSWORD': 'Network%$#@!',
+        'USER': 'uji',
+        'PASSWORD': 'uji123',
         'HOST': 'localhost',
         'PORT': '3306',
     }

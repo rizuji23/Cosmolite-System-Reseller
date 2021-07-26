@@ -104,6 +104,16 @@
 
         <div class="section-1-cari-produk">
             <div class="container">
+                {% if messages %}
+                {% for message in messages %}
+                <div {% if message.tags == 'error' %} class="alert alert-danger" {% else %} class="alert alert-success"
+                    {% endif %}>
+                    <div>
+                        {{ message }}
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
                 <div class="section-1-cari-produk-main">
                     <div class="section-1-cari-produk-content">
                         <div class="cari-produk-header">

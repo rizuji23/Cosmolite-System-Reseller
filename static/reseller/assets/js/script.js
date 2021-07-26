@@ -259,6 +259,8 @@ $(document).ready(function () {
 	var hg = harga.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
 	$('#hargas').text('Rp. ' + hg)
 
+	$('#qty').val($('.qtys').val())
+
 	hitungtotal($('.qtys').val())
 
 	$('.btnminus').click(function () {

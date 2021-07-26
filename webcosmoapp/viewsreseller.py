@@ -1,4 +1,5 @@
 from os import pread
+from webcosmoapp.viewsadmin import pembayaran, pemesanan
 from django.http.response import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
@@ -339,7 +340,7 @@ def buy(request, id_produk):
         users = get_object_or_404(Reseller, username=username)
         detail = Detail_Reseller.objects.get(id_reseller_id=users.id)
         alamat = Alamat.objects.filter(id_user=users.id_reseller)
-        produk = Produk.objects.filter(id_produk=id_produk)
+        produk = Produk.objects.get(id_produk=id_produk)
         account_b = Account_Bank.objects.filter(id_user=users.id_reseller)
         kurir = Kurir.objects.filter(status='1')
         return render(request, 'reseller/detail-transaksi.html', {'reseller': users, 'detail':detail, 'alamat': alamat, 'produk':produk, 'bank':account_b, 'kurir':kurir})
@@ -371,8 +372,8 @@ def listpemesanan(request):
     if request.session.has_key("username_reseller"):
         username = request.session['username_reseller']
         users = get_object_or_404(Reseller, username=username)
-        produk = Produk.objects.all()
-        return render(request, 'reseller/list-pesanan.html', {'reseller': users, 'produk':produk})
+        pemesanan = Pemesanan.objects.filter(id_user_id=users.id)
+        return render(request, 'reseller/list-pesanan.html', {'reseller': users, 'pemesanan':pemesanan})
     else:
         if request.session.has_key("username_reseller"):
             del request.session['username_reseller']
@@ -427,3 +428,142 @@ def gantipassword(request):
             messages.add_message(request, messages.ERROR, 'Harus Login!!')
             return HttpResponseRedirect(reverse('webcosmoappreseller:login'))
 
+def checkoutpost(request):
+    if request.method == 'POST':
+        if request.session.has_key('username_reseller'):
+            username = request.session['username_reseller']
+            user = get_object_or_404(Reseller, username=username)
+            
+            qty = request.POST['qty']
+            alamat = request.POST['alamat']
+            id_produk = request.POST['ids']
+            pengiriman = request.POST['pengiriman']
+            pembayaran = request.POST['pembayaran']
+
+            produk = Produk.objects.get(id = id_produk)
+
+            if qty < '3':
+                messages.add_message(request, messages.ERROR, 'Qty Tidak Sesuai...')
+                return HttpResponseRedirect(reverse('webcosmoappreseller:belanjaproduk'))
+            else:
+                kurir = Kurir.objects.get(id_kurir=pengiriman)
+                total = int(produk.harga_produk) * int(qty) + int(kurir.ongkir)
+                invoice = "COBADULU"
+                id_pemesanan = uuid.uuid4().hex[:6].upper()
+                tanggal = datetime.datetime.now()
+                request.session['checkout_session'] = id_pemesanan
+
+                pemesanan = Pemesanan(id_pemesanan=id_pemesanan, invoice=invoice, qty=int(qty), sub_total=int(total), status="Menunggu Pembayaran", tanggal=tanggal, tanggal_update=tanggal, id_produk_id=id_produk, id_user_id=user.id, id_alamat=alamat, id_bank=pembayaran, id_pengiriman=pengiriman)
+
+                if pemesanan:
+                    pemesanan.save()
+                    return HttpResponseRedirect(reverse('webcosmoappreseller:checkout', kwargs={'id_pemesanan':id_pemesanan}))
+                else:
+                    messages.add_message(request, messages.ERROR, 'Gagal Membeli Barang')
+                    return HttpResponseRedirect(reverse('webcosmoappreseller:belanjaproduk'))
+
+        else:
+            messages.add_message(request, messages.ERROR, 'Harus Login!!')
+            return HttpResponseRedirect(reverse('webcosmoappreseller:login'))
+    else:
+        messages.add_message(request, messages.ERROR, '403 forhibidden')
+        return HttpResponseRedirect(reverse('webcosmoappreseller:dashboard'))
+
+
+def checkout(request, id_pemesanan):
+    if request.session.has_key('username_reseller'):
+        if request.session.has_key('checkout_session'):
+            username = request.session['username_reseller']
+            user = get_object_or_404(Reseller, username=username)
+            pemesanan = Pemesanan.objects.get(id_pemesanan=id_pemesanan)
+            bank = Account_Bank.objects.get(id_user=user.id_reseller)
+            kurir = Kurir.objects.get(id_kurir=pemesanan.id_pengiriman)
+            
+            return render(request, 'reseller/checkout.html', {'pemesanan':pemesanan, 'reseller':user, 'bank':bank, 'kurir':kurir})
+        else:
+            del request.session['checkout_session']
+            return HttpResponseRedirect(reverse('webcosmoappreseller:dashboard'))
+    else:
+        messages.add_message(request, messages.ERROR, 'Harus Login!!')
+        return HttpResponseRedirect(reverse('webcosmoappreseller:login'))
+
+def bayar(request):
+    if request.method == 'POST':
+        if request.session.has_key('username_reseller'):
+            if request.session.has_key('checkout_session'):
+                username = request.session['username_reseller']
+                user = get_object_or_404(Reseller, username=username)
+                
+                id_pembayaran = uuid.uuid4().hex[:6].upper()
+                id_pemesanan = request.POST['ids']
+
+                peme = Pemesanan.objects.get(id_pemesanan=id_pemesanan)
+
+                harga_total = peme.sub_total
+                tanggal = datetime.datetime.now()
+
+                pembayaran = Pembayaran(id_pembayaran=id_pembayaran, harga_total=harga_total, status="Menunggu Konfirmasi Admin", tanggal=tanggal, tanggal_update=tanggal, id_pemesanan_id=peme.id, id_user_id=user.id)
+
+                if pembayaran:
+                    pembayaran.save()
+                    buktitransfer = request.FILES['buktitransfer']
+                    bank = Account_Bank.objects.get(id_bank=peme.id_bank)
+                    pem = Pembayaran.objects.get(id_pembayaran=id_pembayaran)
+                    bukti = Bukti_Pembayaran(id_user=user.id, via=bank.nama_bank, dir_image=buktitransfer, tanggal=tanggal, tanggal_update=tanggal, id_pembayaran_id=pem.id, id_pemesanan_id=peme.id)
+                    if bukti:
+                        bukti.save()
+                        update = Pembayaran.objects.get(id_pembayaran=id_pembayaran)
+                        bukti_pem = Bukti_Pembayaran.objects.get(id_pembayaran_id=pem.id)
+                        update.id_buktipem_id = bukti_pem.id
+                        update.save()
+
+                        pemesa = Pemesanan.objects.get(id_pemesanan=peme.id_pemesanan)
+                        pemesa.status = "Menunggu Konfirmasi Admin"
+                        pemesa.save()
+                        return HttpResponseRedirect(reverse('webcosmoappreseller:done'))
+                    else:
+                        del request.session['checkout_session']
+                        messages.add_message(request, messages.ERROR, 'Gagal Menyimpan Bukti Transfer')
+                        return HttpResponseRedirect(reverse('webcosmoappreseller:dashboard'))
+                else:
+                    del request.session['checkout_session']
+                    messages.add_message(request, messages.ERROR, 'Gagal Pembayaran')
+                    return HttpResponseRedirect(reverse('webcosmoappreseller:dashboard'))
+            else:
+                del request.session['checkout_session']
+                return HttpResponseRedirect(reverse('webcosmoappreseller:dashboard'))
+
+        else:
+            del request.session['checkout_session']
+            messages.add_message(request, messages.ERROR, 'Harus Login!!')
+            return HttpResponseRedirect(reverse('webcosmoappreseller:login'))
+    else:
+        del request.session['checkout_session']
+        messages.add_message(request, messages.ERROR, '403 forhibidden')
+        return HttpResponseRedirect(reverse('webcosmoappreseller:dashboard'))
+
+def done(request):
+    if request.session.has_key('username_reseller'):
+        if request.session.has_key('checkout_session'):
+            username = request.session['username_reseller']
+            user = get_object_or_404(Reseller, username=username)
+            return render(request, 'reseller/done.html', {'reseller':user})
+        else:
+            del request.session['checkout_session']
+            return HttpResponseRedirect(reverse('webcosmoappreseller:dashboard'))
+    else:
+        messages.add_message(request, messages.ERROR, 'Harus Login!!')
+        return HttpResponseRedirect(reverse('webcosmoappreseller:login'))
+
+def donedel(request):
+    if request.session.has_key('username_reseller'):
+        if request.session.has_key('checkout_session'):
+            del request.session['checkout_session']
+            return HttpResponseRedirect(reverse('webcosmoappreseller:dashboard'))
+
+        else:
+            del request.session['checkout_session']
+            return HttpResponseRedirect(reverse('webcosmoappreseller:dashboard'))
+    else:
+        messages.add_message(request, messages.ERROR, 'Harus Login!!')
+        return HttpResponseRedirect(reverse('webcosmoappreseller:login'))

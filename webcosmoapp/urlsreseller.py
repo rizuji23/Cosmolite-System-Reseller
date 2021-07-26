@@ -28,6 +28,11 @@ urlpatterns = [
         path('keranjang/', viewsreseller.keranjang, name="keranjang"),
         path('reward/', viewsreseller.reward, name="reward"),
         path('gantipassword/', viewsreseller.gantipassword, name="gantipassword"),
-        path('editfoto/', viewsreseller.editfoto, name="editfoto")
+        path('editfoto/', viewsreseller.editfoto, name="editfoto"),
+        path('checkoutpost/', viewsreseller.checkoutpost, name="checkoutpost"),
+        path('checkout/<str:id_pemesanan>/', viewsreseller.checkout, name="checkout"),
+        path('bayar/', viewsreseller.bayar, name="bayar"),
+        path('done/', viewsreseller.done, name="done"),
+        path('donedel/', viewsreseller.donedel, name="donedel")
 
 ]

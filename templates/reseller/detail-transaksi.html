@@ -36,20 +36,19 @@
             <div class="container">
 
                 <div class="section-1-dt-main">
-                    {% for p in produk %}
                     <div class="dt-content">
                         <div class="row">
                             <div class="col-sm">
                                 <h1 class="mb-0">
-                                    {{ p.nama_produk }}
+                                    {{ produk.nama_produk }}
                                 </h1>
                                 <p class="mb-0">
-                                    {{ p.kategori.kategori }} ({{ p.sub_kategori.sub_kategori }})
+                                    {{ produk.kategori.kategori }} ({{ produk.sub_kategori.sub_kategori }})
                                 </p>
                                 <h1 class="mb-0 ">
-                                    Rp. {{ p.harga_produk|intcomma }}
+                                    Rp. {{ produk.harga_produk|intcomma }}
                                 </h1>
-                                <input type="hidden" id="harga_produks" value="{{ p.harga_produk }}">
+                                <input type="hidden" id="harga_produks" value="{{ produk.harga_produk }}">
                             </div>
                             <div class="col-sm">
                                 <div class="float-right">
@@ -76,7 +75,6 @@
                         </div>
 
                     </div>
-                    {% endfor %}
                     <div class=" line-dt">
                     </div>
                     <div class="dt-content">
@@ -167,11 +165,13 @@
                         </div>
                     </div>
                     <div>
-                        <form action="" method="POST">
-                            <input type="hidden" id="qty">
-                            <input type="hidden" id="alamat">
-                            <input type="hidden" id="pembayaran">
-                            <input type="hidden" id="pengiriman">
+                        <form action="{% url 'webcosmoappreseller:checkoutpost' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" id="qty" name="qty" required>
+                            <input type="hidden" id="alamat" name="alamat" required>
+                            <input type="hidden" id="pembayaran" name="pembayaran" required>
+                            <input type="hidden" id="pengiriman" name="pengiriman" required>
+                            <input type="hidden" name="ids" value="{{ produk.id }}" required>
                             <button type="submit" class="btn btn-block btn-dt-checkout">
                                 Checkout
                             </button>

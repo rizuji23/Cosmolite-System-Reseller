@@ -234,7 +234,7 @@ class Pembayaran(models.Model):
     id_pembayaran = models.CharField(max_length=30)
     id_pemesanan = models.ForeignKey('webcosmoapp.Pemesanan', related_name='pembayaranpemesananid', on_delete=models.CASCADE)
     id_user = models.ForeignKey('webcosmoapp.Reseller', related_name='userid', on_delete=models.CASCADE)
-    id_buktipem = models.ForeignKey('webcosmoapp.Bukti_Pembayaran', related_name='pembayaranbuktipemid', on_delete=models.CASCADE)
+    id_buktipem = models.ForeignKey('webcosmoapp.Bukti_Pembayaran', related_name='pembayaranbuktipemid', on_delete=models.CASCADE, null=True)
     harga_total = models.BigIntegerField()
     status = models.CharField(max_length=100)
     tanggal = models.DateTimeField()
@@ -249,7 +249,7 @@ class Bukti_Pembayaran(models.Model):
     via = models.CharField(max_length=30)
     id_pembayaran = models.ForeignKey('webcosmoapp.Pembayaran', related_name='buktipem_pembayaran', on_delete=models.CASCADE)
     id_pemesanan = models.ForeignKey('webcosmoapp.Pemesanan', related_name='buktipem_pemesanan', on_delete=models.CASCADE)
-    dir_image = models.FileField(upload_to='dir_image')
+    dir_image = models.FileField(upload_to='buktipembayaran')
     tanggal = models.DateTimeField()
     tanggal_update = models.DateTimeField()
 

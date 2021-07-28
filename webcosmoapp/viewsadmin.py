@@ -503,13 +503,49 @@ def transaksi_reseller(request):
     return render(request, 'cosmoadmin/transaksireseller.html')
 
 def pemesanan(request):
-    return render(request, 'cosmoadmin/pemesanan.html')
+    if request.session.has_key("username"):
+        username = request.session['username']
+        users = get_object_or_404(User, username=username)
+        datapemesanan = Pemesanan.objects.all()       
+        return render(request, 'cosmoadmin/pemesanan.html', {'pemesanan':datapemesanan, 'users':users})
+    else:
+        if request.session.has_key("username"):
+            del request.session['username']
+            messages.add_message(request, messages.ERROR, 'Harus Login!!')
+            return HttpResponseRedirect(reverse('webcosmoapp:index'))
+        else:
+            messages.add_message(request, messages.ERROR, 'Harus Login!!')
+            return HttpResponseRedirect(reverse('webcosmoapp:index'))
 
 def pembayaran(request):
-    return render(request, 'cosmoadmin/pembayaran.html')
+    if request.session.has_key("username"):
+        username = request.session['username']
+        users = get_object_or_404(User, username=username)
+        datapembayaran = Pembayaran.objects.filter(status='Menunggu Konfirmasi Admin')       
+        return render(request, 'cosmoadmin/pembayaran.html', {'pembayaran':datapembayaran})
+    else:
+        if request.session.has_key("username"):
+            del request.session['username']
+            messages.add_message(request, messages.ERROR, 'Harus Login!!')
+            return HttpResponseRedirect(reverse('webcosmoapp:index'))
+        else:
+            messages.add_message(request, messages.ERROR, 'Harus Login!!')
+            return HttpResponseRedirect(reverse('webcosmoapp:index'))
 
 def pengiriman(request):
-    return render(request, 'cosmoadmin/pengiriman.html')
+    if request.session.has_key("username"):
+        username = request.session['username']
+        users = get_object_or_404(User, username=username)
+        datapengiriman = Pengiriman.objects.all()       
+        return render(request, 'cosmoadmin/pengiriman.html', {'pengiriman':datapengiriman})
+    else:
+        if request.session.has_key("username"):
+            del request.session['username']
+            messages.add_message(request, messages.ERROR, 'Harus Login!!')
+            return HttpResponseRedirect(reverse('webcosmoapp:index'))
+        else:
+            messages.add_message(request, messages.ERROR, 'Harus Login!!')
+            return HttpResponseRedirect(reverse('webcosmoapp:index'))
 
 def pengaturan(request):
     if request.session.has_key("username"):
@@ -559,6 +595,69 @@ def addkurir(request):
         messages.add_message(request, messages.ERROR, '403 forhibidden')
         return HttpResponseRedirect(reverse('webcosmoapp:dashboard'))
     
+def acceptorder(request):
+    if request.method == 'POST':
+        if request.session.has_key('username'):
+            username = request.session['username']
+            user = get_object_or_404(User, username=username)
+            id_pemesanan = request.POST['id']
+            pembayaran = Pembayaran.objects.get(id_pemesanan_id=id_pemesanan)
+            tanggal = datetime.datetime.now()
+
+            if pembayaran:
+                pembayaran.status = 'Pesanan Sedang Diproses'
+                pembayaran.tanggal_update = tanggal
+                pembayaran.save()
+                pemesanan = Pemesanan.objects.get(id=id_pemesanan)
+                pemesanan.status = 'Pesanan Sedang Diproses'
+                pemesanan.tanggal_update = tanggal
+                pemesanan.save()
+                id_pengiriman = uuid.uuid4().hex[:6].upper()
+                kurir = Kurir.objects.get(id_kurir=pemesanan.id_pengiriman)
+                pengiriman = Pengiriman(id_pengiriman=id_pengiriman, resi='', status='Pesanan Sedang Diproses', tanggal_pengiriman='', tanggal_tiba='', tanggal=tanggal, tanggal_update=tanggal, id_pembayaran_id=pembayaran.id, id_pemesanan_id=id_pemesanan, id_user_id=user.id, via_kurir_id=kurir.id)
+                pengiriman.save()
+                return HttpResponseRedirect(reverse('webcosmoapp:pengiriman'))
+            else:
+                messages.add_message(request, messages.ERROR, 'Terjadi kesalahan pada menghapus data Produk!!')
+        else:
+            messages.add_message(request, messages.ERROR, 'Harus Login!!')
+            return HttpResponseRedirect(reverse('webcosmoapp:index'))
+    else:
+        messages.add_message(request, messages.ERROR, '403 forhibidden')
+        return HttpResponseRedirect(reverse('webcosmoapp:dashboard'))
+
+def addpengiriman(request):
+    if request.method == 'POST':
+        if request.session.has_key('username'):
+            username = request.session['username']
+            user = get_object_or_404(User, username=username)
+            id_pemesanan = request.POST['ids']
+            pengiriman = Pengiriman.objects.get(id_pemesanan_id=id_pemesanan)
+            resi = request.POST['resi']
+            tanggal_pengiriman = request.POST['tanggal_pengiriman']
+            tanggal = datetime.datetime.now()
+
+            if pengiriman:
+                pengiriman.status = 'Sedang Dikirim'
+                pengiriman.resi = resi
+                pengiriman.tanggal_pengiriman = tanggal_pengiriman
+                pengiriman.tanggal_update = tanggal
+                pengiriman.save()
+                pemesanan = Pemesanan.objects.get(id=id_pemesanan)
+                pemesanan.status = 'Sedang Dikirim'
+                pemesanan.pengirimanid_id = pengiriman.id
+                pemesanan.save()
+                messages.add_message(request, messages.SUCCESS, 'Berhasil mengirim produk...')
+                return HttpResponseRedirect(reverse('webcosmoapp:pengiriman'))
+            else:
+                messages.add_message(request, messages.ERROR, 'Terjadi kesalahan pada menghapus data Produk!!')
+                return HttpResponseRedirect(reverse('webcosmoapp:pengiriman'))
+        else:
+            messages.add_message(request, messages.ERROR, 'Harus Login!!')
+            return HttpResponseRedirect(reverse('webcosmoapp:index'))
+    else:
+        messages.add_message(request, messages.ERROR, '403 forhibidden')
+        return HttpResponseRedirect(reverse('webcosmoapp:dashboard'))
 
 def logout(request):
     del request.session['username']

@@ -1,0 +1,52 @@
+<div class="form-group">
+    <label for="">Nama Barang</label>
+    <input type="text" value="{{ db.nama_produk }}" class="form-control" disabled>
+</div>
+<div class="form-group">
+    <label for="">Harga Barang</label>
+    <input type="text" value="Rp. {{ db.harga_produk }}" class="form-control" disabled>
+</div>
+<div class="form-group">
+    <label for="">Kategori</label>
+    <input type="text" value="{{ kategori.kategori }}" class="form-control" disabled>
+</div>
+<div class="form-group">
+    <label for="">Sub Kategori</label>
+    <input type="text" value="{{ sub_kategori.sub_kategori }}" class="form-control" disabled>
+</div>
+<div class="form-group">
+    <label for="">Nama Pembeli</label>
+    <input type="text" value="{{ db.stok }}" class="form-control" disabled>
+</div>
+<div class="form-group">
+    <label for="">Qty</label>
+    <input type="text" value="{{ db.stok }}" class="form-control" disabled>
+</div>
+
+<div class="form-group">
+    <label for="">Thumbnail Barang</label>
+    <div class="card">
+        <div class="card-body">
+            <img src="{{ detailp.thumb_image.url }}" class="img-fluid" alt="">
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="">Foto Barang</label>
+    <div class="card">
+        <div class="card-body">
+            <div class="fotobarang">
+                {% for fp in fp %}
+                <img src="{{ fp.dir_foto.url }}" class="w-50" alt="">
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <p class="text-primary">Tanggal Add : {{ db.tanggal }}</p>
+    <p class="text-danger">Tanggal Update : {{ db.tanggal_update }}</p>
+</div>

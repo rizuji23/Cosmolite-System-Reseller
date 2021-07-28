@@ -1,0 +1,426 @@
+{% load i18n %}
+{% load l10n %}
+{% load humanize %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cosmolite | Cari Produk</title>
+    <link rel="shortcut icon" href="{% static 'reseller/assets/img/logo-fav.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/owl.theme.default.css' %}">
+    <link rel="stylesheet" href="{% static 'reseller/assets/css/animate.css' %}">
+</head>
+
+<body>
+    <div class="container-custom">
+        <nav class="navbar navbar-cari-produk sticky-top" id="navbar">
+            <div class="col d-flex justify-content-start align-items-center p-0">
+                <div class="input-group animate__animated animate__fadeInLeft">
+                    <span class="input-group-text input-search">
+                        <img src="{% static 'reseller/assets/img/Icons/Mask Group 6.png' %}" alt=""
+                            class="img-fluid img-search">
+                    </span>
+                    <input type="text" class="form-control input-fixing" id="" placeholder="Cari Produk">
+                </div>
+            </div>
+            <div class="col-4 d-flex justify-content-end">
+                <div class="row">
+                    <div class="nav-header-icon">
+                        <div class="col p-0">
+                            <ul class="d-flex justify-content-center align-items-center m-0">
+                                <li>
+                                    <a href="{% url 'webcosmoappreseller:keranjang' %}"
+                                        class="btn p-0 btn-k animate__animated animate__fadeInRight">
+                                        <span
+                                            class="bandage-keranjang d-flex justify-content-center align-items-center animate__animated animate__shakeY">+9</span>
+                                        <img src="{% static 'reseller/assets/img/Icons/Group 121.png' %}" class="">
+                                    </a>
+                                </li>
+                                <li>
+                                    <button type="button" onclick="openNav()" class=" btn p-0 m-0">
+                                        <img src="{% static 'reseller/assets/img/Icons/menu.png' %}">
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div id="mySidenav" class="nav-setting">
+            {% include 'reseller/sidebar.html' with objects=reseller %}
+        </div>
+        <div class="navbar-bottom animate__animated animate__zoomIn">
+            <div class="navbar-bottom-box">
+                <div class="navbar-bottom-content">
+                    <div class="row no-gutters text-center">
+                        <div class="col">
+                            <a href="{% url 'webcosmoappreseller:dashboard' %}" class="btn p-0">
+                                <div class="col p-0">
+                                    <img src="{% static 'reseller/assets/img/Icons/011-house.png' %}">
+                                </div>
+                                <div class="col p-0">
+                                    <p class="m-0">
+                                        Home
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-5">
+                            <a href="#" class="btn p-0">
+                                <div class="col p-0">
+                                    <img src="{% static 'reseller/assets/img/Icons/Group 120.png' %}">
+                                </div>
+                                <div class="col p-0">
+                                    <p class="m-0">
+                                        Belanja Produk
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="{% url 'webcosmoappreseller:reward' %}" class="btn p-0">
+                                <div class="col p-0">
+                                    <img src="{% static 'reseller/assets/img/Icons/Group 108.png' %}">
+                                </div>
+                                <div class="col p-0">
+                                    <p class="m-0">
+                                        Reward
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-1-cari-produk">
+            <div class="container">
+                {% if messages %}
+                {% for message in messages %}
+                <div {% if message.tags == 'error' %} class="alert alert-danger" {% else %} class="alert alert-success"
+                    {% endif %}>
+                    <div>
+                        {{ message }}
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+                <div class="section-1-cari-produk-main">
+                    <div class="section-1-cari-produk-content">
+                        <div class="cari-produk-header">
+                            <ul class="text-center mx-0">
+                                <li class=" animate__animated animate__fadeInUp">
+                                    <button type="button" class="btn btn-f" onclick="openFilter()">
+                                        <div class="d-flex justify-content-center">
+                                            <img src="{% static 'reseller/assets/img/Icons/Group 140.png' %}" alt="">
+                                            <h1 class="d-flex align-items-center pl-3">
+                                                Filter
+                                            </h1>
+                                        </div>
+                                    </button>
+                                </li>
+                                <li class="mx-2 animate__animated animate__fadeInUp duration-3">
+                                    <a href="#" class="btn btn-kf">
+                                        <div class="d-flex justify-content-center">
+                                            <h1 class="d-flex align-items-center">
+                                                Filter
+                                            </h1>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="mr-2 animate__animated animate__fadeInUp duration-4">
+                                    <a href="#" class="btn btn-kf">
+                                        <div class="d-flex justify-content-center">
+                                            <h1 class="d-flex align-items-center">
+                                                Filter
+                                            </h1>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class=" animate__animated animate__fadeInUp duration-5">
+                                    <a href="#" class="btn btn-kf">
+                                        <div class="d-flex justify-content-center">
+                                            <h1 class="d-flex align-items-center">
+                                                Filter
+                                            </h1>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="cari-produk-main">
+                            <div class="">
+                                <div class="row">
+                                    {% for p in produk %}
+                                    <div class="col-6 card-cp-box animate__animated animate__zoomIn duration-3">
+                                        <a href="/detailreseller/{{ p.id_produk.id_produk }}">
+                                            <div class="card card-cp">
+                                                <img class="card-img-top"
+                                                    src="{{ p.id_produk.id_detail.thumb_image.url }}" alt="">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">
+                                                        {{ p.id_produk.nama_produk }}
+                                                    </h5>
+                                                    <small class="text-center">
+                                                        <img src="{% static 'reseller/assets/img/Icons/star.png' %}"
+                                                            alt="">
+                                                        <span><strong>5.0</strong></span>
+                                                        <span>(12)</span>
+                                                        <span> | </span>
+                                                        <span>4 Terjual</span>
+                                                    </small>
+                                                    <h1 class="harga_pro">
+                                                        Rp. {{ p.id_produk.harga_produk|intcomma }}
+                                                    </h1>
+                                                    <div class="float-right">
+                                                        <a href="#" class="btn p-0">
+                                                            <img src="{% static 'reseller/assets/img/Icons/shopping-cart-solid.png' %}"
+                                                                alt="">
+                                                        </a>
+                                                        <a href="#" class="btn p-0">
+                                                            <img src="{% static 'reseller/assets/img/Icons/share-alt.png' %}"
+                                                                alt="" class="img-share">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="myFilter" class="filter-collapse">
+            <nav class="navbar navbar-cari-produk sticky-top" id="navbar">
+                <div class="col d-flex justify-content-start align-items-center p-0">
+                    <button class="btn p-0" onclick="closeFilter()">
+                        <img src="{% static 'reseller/assets/img/Icons/Mask Group 7.png' %}" class="img-setting-close">
+                    </button>
+                    <h1 class="">
+                        Filter
+                    </h1>
+                </div>
+            </nav>
+            <div class="section-1-urut-berdasarkan">
+                <div class="container">
+                    <div class="section-1-urut-berdasarkan-main">
+                        <h1 class="h1-ub m-0">
+                            Urutkan Berdasarkan
+                        </h1>
+                        <div class="filter-berdasarkan">
+                            <ul class="text-left mx-0">
+                                <li class="ml-0">
+                                    <a href="#" class="btn">
+                                        <div class="d-flex justify-content-center">
+                                            <h1 class="d-flex align-items-center">
+                                                Terendah
+                                            </h1>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="mx-2">
+                                    <a href="#" class="btn">
+                                        <div class="d-flex justify-content-center">
+                                            <h1 class="d-flex align-items-center">
+                                                Termahal
+                                            </h1>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="mr-2">
+                                    <a href="#" class="btn">
+                                        <div class="d-flex justify-content-center">
+                                            <h1 class="d-flex align-items-center">
+                                                Rekomendasi
+                                            </h1>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="lines">
+                            <div class="container">
+                                <div class="ll">
+                                    <div class="kk">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h1 class="h1-ub">
+                            Obat
+                        </h1>
+                        <div class="filter-berdasarkan">
+                            <ul class="text-left mx-0">
+                                <li class="ml-0">
+                                    <a href="#" class="btn">
+                                        <div class="d-flex justify-content-center">
+                                            <h1 class="d-flex align-items-center">
+                                                Obat Muka
+                                            </h1>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="mx-2">
+                                    <a href="#" class="btn">
+                                        <div class="d-flex justify-content-center">
+                                            <h1 class="d-flex align-items-center">
+                                                Obat Muka
+                                            </h1>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="mr-2">
+                                    <a href="#" class="btn">
+                                        <div class="d-flex justify-content-center">
+                                            <h1 class="d-flex align-items-center">
+                                                Obat Muka
+                                            </h1>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="text-left mx-0 mt-3">
+                                <li class="ml-0">
+                                    <a href="#" class="btn">
+                                        <div class="d-flex justify-content-center">
+                                            <h1 class="d-flex align-items-center">
+                                                Obat Muka
+                                            </h1>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="mx-2">
+                                    <a href="#" class="btn">
+                                        <div class="d-flex justify-content-center">
+                                            <h1 class="d-flex align-items-center">
+                                                Obat Muka
+                                            </h1>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="mr-2">
+                                    <a href="#" class="btn">
+                                        <div class="d-flex justify-content-center">
+                                            <h1 class="d-flex align-items-center">
+                                                Obat Muka
+                                            </h1>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="lines">
+                            <div class="container">
+                                <div class="ll">
+                                    <div class="kk">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h1 class="h1-ub">
+                            Lainnya
+                        </h1>
+                        <div class="filter-berdasarkan">
+                            <div class="row no-gutters">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        Pre-Order
+                                    </label>
+                                </div>
+                                <div class="form-check ml-3">
+                                    <input class="form-check-input" type="checkbox" value="" id="">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        Ready Stok
+                                    </label>
+                                </div>
+                                <div class="form-check ml-3">
+                                    <input class="form-check-input" type="checkbox" value="" id="">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        Terbaru
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lines">
+                            <div class="container">
+                                <div class="ll">
+                                    <div class="kk">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h1 class="h1-ub">
+                            Lainnya
+                        </h1>
+                        <div class="filter-berdasarkan">
+                            <div class="row no-gutters">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        Lokasi
+                                    </label>
+                                </div>
+                                <div class="form-check ml-3">
+                                    <input class="form-check-input" type="checkbox" value="" id="">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        Luar Kota
+                                    </label>
+                                </div>
+                                <div class="form-check ml-3">
+                                    <input class="form-check-input" type="checkbox" value="" id="">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        Dalam Kota
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lines">
+                            <div class="container">
+                                <div class="ll">
+                                    <div class="kk">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h1 class="h1-ub">
+                            Rating
+                        </h1>
+                        <div class="filter-berdasarkan">
+                            <div class="row no-gutters">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        4+ Keatas
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script src="{% static 'reseller/assets/js/jquery-3.6.0.min.js' %}"></script>
+            <script src="{% static 'reseller/assets/js/bootstrap.min.js' %}"></script>
+            <script src="{% static 'reseller/assets/js/owl.carousel.min.js' %}"></script>
+            <script src="{% static 'reseller/assets/js/script.js' %}"></script>
+</body>
+
+</html>

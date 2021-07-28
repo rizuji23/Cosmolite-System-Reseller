@@ -331,3 +331,39 @@ $(document).ready(function () {
 
 
 })
+
+
+function sudahTiba(ids) {
+	csrf = $("[name='csrfmiddlewaretoken']").val();
+	Swal.fire({
+		title: 'Apakah anda yakin??',
+		text: "Pastikan barang sudah sampai dengan benar",
+		icon: 'info',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Iya'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			$.ajax({
+				url: '/sudahtiba/',
+				data: {
+					'id': ids,
+					'csrfmiddlewaretoken': csrf
+				},
+				method: 'POST',
+				success: function (data) {
+					Swal.fire(
+						'Sudah Tiba!',
+						'Silahkan berjualan dan menangkan komisi keuntungan',
+						'success'
+					).then((result) => {
+						if (result.isConfirmed) {
+							location.reload()
+						}
+					})
+				}
+			})
+		}
+	})
+}

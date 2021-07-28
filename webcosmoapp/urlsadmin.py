@@ -35,4 +35,6 @@ urlpatterns = [
     path('deletesubkategori/', viewsadmin.deletesubkategori, name="deletesubkategori"),
     path('blockreseller/', viewsadmin.blockreseller, name="blockreseller"),
     path('addkurir/', viewsadmin.addkurir, name="addkurir"),
+    path('acceptorder/', viewsadmin.acceptorder, name="acceptorder"),
+    path('addpengiriman/', viewsadmin.addpengiriman, name="addpengiriman")
 ]

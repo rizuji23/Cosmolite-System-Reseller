@@ -225,6 +225,7 @@ class Pemesanan(models.Model):
     id_pengiriman = models.CharField(max_length=30, null=True)
     id_bank = models.CharField(max_length=30, null=True)
     id_alamat = models.CharField(max_length=30, null=True)
+    pengirimanid = models.ForeignKey('webcosmoapp.Pengiriman', related_name='pengirimanid', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.invoice
@@ -264,9 +265,9 @@ class Pengiriman(models.Model):
     id_pembayaran = models.ForeignKey('webcosmoapp.Pembayaran', related_name='pengirimanpemebayaranid', on_delete=models.CASCADE)
     id_user = models.ForeignKey('webcosmoapp.Reseller', related_name='pengirimanuserid', on_delete=models.CASCADE)
     via_kurir = models.ForeignKey('webcosmoapp.Kurir', related_name='pengirimankuririd', on_delete=models.CASCADE)
-    resi = models.CharField(max_length=150)
+    resi = models.CharField(max_length=150, null=True)
     status = models.CharField(max_length=100)
-    tanggal_pengiriman = models.CharField(max_length=100)
+    tanggal_pengiriman = models.CharField(max_length=100, null=True)
     tanggal_tiba = models.CharField(max_length=100, null=True)
     tanggal = models.DateTimeField()
     tanggal_update = models.DateTimeField()

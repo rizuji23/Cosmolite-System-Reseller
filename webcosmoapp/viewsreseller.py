@@ -520,6 +520,12 @@ def bayar(request):
                         pemesa = Pemesanan.objects.get(id_pemesanan=peme.id_pemesanan)
                         pemesa.status = "Menunggu Konfirmasi Admin"
                         pemesa.save()
+
+                        produk = Produk.objects.get(id=peme.id_produk_id)
+                        stoks = int(produk.stok) - int(peme.qty)
+                        produk.stok = stoks
+                        produk.save()
+
                         return HttpResponseRedirect(reverse('webcosmoappreseller:done'))
                     else:
                         del request.session['checkout_session']
@@ -567,3 +573,59 @@ def donedel(request):
     else:
         messages.add_message(request, messages.ERROR, 'Harus Login!!')
         return HttpResponseRedirect(reverse('webcosmoappreseller:login'))
+
+def jualproduk(request):
+    if request.session.has_key("username_reseller"):
+        username = request.session['username_reseller']
+        users = get_object_or_404(Reseller, username=username)
+        produk = Produk_Reseller.objects.filter(id_reseller_id=users.id)
+        return render(request, 'reseller/jual-produk.html', {'reseller': users, 'produk':produk})
+    else:
+        if request.session.has_key("username_reseller"):
+            del request.session['username_reseller']
+            messages.add_message(request, messages.ERROR, 'Harus Login!!')
+            return HttpResponseRedirect(reverse('webcosmoappreseller:login'))
+        else:
+            messages.add_message(request, messages.ERROR, 'Harus Login!!')
+            return HttpResponseRedirect(reverse('webcosmoappreseller:login'))
+
+def sudahtiba(request):
+    if request.method == 'POST':
+        if request.session.has_key('username_reseller'):
+            username = request.session['username_reseller']
+            user = get_object_or_404(Reseller, username=username)
+            
+            id_pemesanan = request.POST['id']
+
+            tanggal = datetime.datetime.now()
+
+            pemesanan = Pemesanan.objects.get(id_pemesanan=id_pemesanan)
+            pemesanan.status = 'Sudah Tiba'
+            pemesanan.tanggal_update = tanggal
+            if pemesanan:
+                pemesanan.save()
+                pengiriman = Pengiriman.objects.get(id=pemesanan.pengirimanid_id)
+                pengiriman.status = 'Sudah Tiba'
+                pengiriman.tanggal_tiba = tanggal
+                pengiriman.tanggal_update = tanggal
+                pengiriman.save()
+                id_produk_reseller = uuid.uuid4().hex[:6].upper()
+                produk_reseller = Produk_Reseller(id_produk_reseller=id_produk_reseller, qty=pemesanan.qty, harga_komisi='500000', tanggal=tanggal, tanggal_update=tanggal, id_produk_id=pemesanan.id_produk_id, id_reseller_id=user.id)
+                if produk_reseller:
+                    produk_reseller.save()
+                    messages.add_message(request, messages.SUCCESS, 'Pengiriman Sudah Berhasil')
+                    return HttpResponseRedirect(reverse('webcosmoappreseller:dashboard'))
+                else:
+                    messages.add_message(request, messages.ERROR, 'Pengiriman Sudah Gagal!!')
+                    return HttpResponseRedirect(reverse('webcosmoappreseller:dashboard'))
+            else:
+                messages.add_message(request, messages.SUCCESS, 'Pengiriman Sudah Gagal!')
+                return HttpResponseRedirect(reverse('webcosmoappreseller:dashboard'))
+
+            
+        else:
+            messages.add_message(request, messages.ERROR, 'Harus Login!!')
+            return HttpResponseRedirect(reverse('webcosmoappreseller:login'))
+    else:
+        messages.add_message(request, messages.ERROR, '403 forhibidden')
+        return HttpResponseRedirect(reverse('webcosmoappreseller:dashboard'))

@@ -38,6 +38,70 @@ function deletebarang(ids) {
     })
 }
 
+function acceptOrder(ids) {
+    csrf = $("[name='csrfmiddlewaretoken']").val();
+    Swal.fire({
+        title: 'Apakah anda yakin??',
+        text: "Cek bukti transfer agar tidak tertipu...",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Iya'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: '/cosmoadmin/acceptorder/',
+                data: {
+                    'id': ids,
+                    'csrfmiddlewaretoken': csrf
+                },
+                method: 'POST',
+                success: function (data) {
+                    Swal.fire(
+                        'Diaccept..',
+                        'Lakukan proses pemesanan produk...',
+                        'success'
+                    ).then((result) => {
+                        if (result.isConfirmed) {
+                            document.location.href = '/cosmoadmin/pengiriman/'
+                        }
+                    })
+                }
+            })
+        }
+    })
+}
+
+
+function kirimOrder(ids) {
+    csrf = $("[name='csrfmiddlewaretoken']").val();
+    Swal.fire({
+        title: 'Apakah anda yakin??',
+        text: "Cek bukti transfer agar tidak tertipu...",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Iya'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Diaccept..',
+                'Lakukan penginputan data pengiriman...',
+                'success'
+            ).then((result) => {
+                if (result.isConfirmed) {
+                    $('#dataid').val(ids)
+                    $('#pengirimanInput').modal('show')
+                }
+            })
+        }
+    })
+}
+
+
+
 function blokir(ids) {
     csrf = $("[name='csrfmiddlewaretoken']").val();
     Swal.fire({

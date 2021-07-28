@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +12,7 @@
 
     <title>CosmoLite - Pembayaran</title>
     <link rel="shortcut icon" href="{% static 'cosmoadmin/img/logo-fav.png' %}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
 
     <!-- Custom fonts for this template-->
     <link href="{% static 'cosmoadmin/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -415,34 +417,51 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <caption class="pb-0">Jumlah Barang <span class="font-weight-bold">20 Pcs</span>
-                                    </caption>
-                                    <thead>
-                                        <tr>
-                                            <th>Nama Barang</th>
-                                            <th>Kategori Barang</th>
-                                            <th>Stok</th>
-                                            <th>Harga Satuan</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Nama Barang</th>
-                                            <th>Kategori Barang</th>
-                                            <th>Stok</th>
-                                            <th>Harga Satuan</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>Naon wee</td>
-                                            <td>kecantikan</td>
-                                            <td>20</td>
-                                            <td>Rp. 800.000,-</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="table-responsive">
+                                    <table id="datapembayaran" class="display">
+                                        {% csrf_token %}
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Invoice</th>
+                                                <th>Produk</th>
+                                                <th>Qty</th>
+                                                <th>Sub Total</th>
+                                                <th>Status</th>
+                                                <th>Tanggal</th>
+                                                <th>Opsi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for peme in pembayaran %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ peme.id_pemesanan.id_pemesanan }}</td>
+                                                <td>{{ peme.id_pemesanan.id_produk.nama_produk }}</td>
+                                                <td>{{ peme.id_pemesanan.qty }}</td>
+                                                <td>Rp. {{ peme.harga_total|intcomma }}</td>
+                                                <td>{{ peme.status }}</td>
+                                                <td>{{ peme.tanggal }}</td>
+                                                <td>
+                                                    <button type="button"
+                                                        onclick="acceptOrder('{{ peme.id_pemesanan_id }}')"
+                                                        class="btn font-weight-bold  btn-success">
+                                                        Accept Order
+                                                    </button>
+                                                    <a href="editpemesanan.html"
+                                                        class="btn font-weight-bold  btn-danger">
+                                                        Block Order
+                                                    </a>
+                                                    <a href="#" class="btn font-weight-bold  btn-warning"
+                                                        data-toggle="modal" data-target="#detail">
+                                                        Detail
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -492,7 +511,28 @@
             </div>
         </div>
     </div>
-
+    <div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save
+                        changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Bootstrap core JavaScript-->
     <script src="{% static 'cosmoadmin/vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'cosmoadmin/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -509,7 +549,16 @@
     <!-- Page level custom scripts -->
     <script src="{% static 'cosmoadmin/js/demo/chart-area-demo.js' %}"></script>
     <script src="{% static 'cosmoadmin/js/demo/chart-pie-demo.js' %}"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js">
+    </script>
+    <script src="{% static 'cosmoadmin/js/scripts.js' %}">
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#datapembayaran').DataTable();
+        });
+    </script>
 </body>
 
 </html>

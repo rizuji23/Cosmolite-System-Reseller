@@ -33,6 +33,8 @@ urlpatterns = [
         path('checkout/<str:id_pemesanan>/', viewsreseller.checkout, name="checkout"),
         path('bayar/', viewsreseller.bayar, name="bayar"),
         path('done/', viewsreseller.done, name="done"),
-        path('donedel/', viewsreseller.donedel, name="donedel")
+        path('donedel/', viewsreseller.donedel, name="donedel"),
+        path('jualproduk/', viewsreseller.jualproduk, name="jualproduk"),
+        path('sudahtiba/', viewsreseller.sudahtiba, name="sudahtiba")
 
 ]

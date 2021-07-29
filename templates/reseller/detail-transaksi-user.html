@@ -49,7 +49,8 @@
                                 <h1 class="mb-0 ">
                                     Rp. {{ produk.id_produk.harga_produk|add:produk.harga_komisi|intcomma }}
                                 </h1>
-                                <input type="hidden" id="harga_produks" value="{{ produk.id_produk.harga_produk }}">
+                                <input type="hidden" id="harga_produks"
+                                    value="{{ produk.id_produk.harga_produk|add:produk.harga_komisi }}">
                             </div>
                             <div class="col-sm">
                                 <div class="float-right">
@@ -58,15 +59,15 @@
                                 <div class="keranjang-icon">
                                     <ul class="float-right">
                                         <li>
-                                            <button type="button" class="btn btnminus">
+                                            <button type="button" class="btn btnminus2">
                                                 <img src="{% static 'reseller/assets/img/Icons/Mask Group 11.png' %}">
                                             </button>
                                         </li>
                                         <li>
-                                            <input value="3" class="form-control qtys" disabled>
+                                            <input value="1" class="form-control qtys" disabled>
                                         </li>
                                         <li>
-                                            <button type="button" class="btn btnplus">
+                                            <button type="button" class="btn btnplus2">
                                                 <img src="{% static 'reseller/assets/img/Icons/Mask Group 10.png' %}">
                                             </button>
                                         </li>
@@ -96,186 +97,114 @@
                             Pembelian Produk
                         </p>
                     </div>
-                    <div class="line-dt"></div>
-                    <div class="row no-gutters">
-                        <div class="col">
-                            <div class="dt-content">
-                                <h1 class="mb-0">
-                                    Nama :
-                                </h1>
-                                <input type="text" class="form-control mt-2">
+                    <form action="{% url 'webcosmoappreseller:checkoutenduser' %}" method="POST">
+
+                        <div class="line-dt"></div>
+                        <div class="row no-gutters">
+                            <div class="col">
+                                <div class="dt-content">
+                                    <h1 class="mb-0">
+                                        Nama :
+                                    </h1>
+                                    <input type="text" required name="nama_enduser" class="form-control mt-2">
+                                </div>
                             </div>
-                        </div>
-                        <!-- <div class="col-3 d-flex justify-content-end align-items-center">
+                            <!-- <div class="col-3 d-flex justify-content-end align-items-center">
                             <button data-toggle="modal" data-target="#listAlamat" type="button" class="btn btn-dt-ubah">
                                 Ubah
                             </button>
                         </div> -->
-                    </div>
-                    <div class="line-dt"></div>
-                    <div class="row no-gutters">
-                        <div class="col">
-                            <div class="dt-content">
-                                <h1 class="mb-0">
-                                    Dikirim Ke :
-                                </h1>
-                                <textarea name="" id="" cols="30" rows="10" class="form-control mt-2"></textarea>
-                            </div>
                         </div>
-                        <!-- <div class="col-3 d-flex justify-content-end align-items-center">
+                        <div class="line-dt"></div>
+                        <div class="row no-gutters">
+                            <div class="col">
+                                <div class="dt-content">
+                                    <h1 class="mb-0">
+                                        Dikirim Ke :
+                                    </h1>
+                                    <textarea name="alamat_enduser" required id="" cols="30" rows="10"
+                                        class="form-control mt-2"></textarea>
+                                </div>
+                            </div>
+                            <!-- <div class="col-3 d-flex justify-content-end align-items-center">
                             <button data-toggle="modal" data-target="#listAlamat" type="button" class="btn btn-dt-ubah">
                                 Ubah
                             </button>
                         </div> -->
-                    </div>
-                    <div class="line-dt"></div>
-
-                    <div class="row no-gutters">
-                        <div class="col">
-                            <div class="dt-content">
-                                <h1 class="mb-0">
-                                    Pembayaran Via :
-                                </h1>
-                                {% if bank.nama_bank == '0' %}
-                                <p class="mb-0 mt-2" id="pembayaran2">
-                                    BCA : {{ bank.no_rekening }}
-                                </p>
-                                {% elif bank.nama_bank == '1' %}
-                                <p class="mb-0 mt-2" id="pembayaran2">
-                                    Mandiri : {{ bank.no_rekening }}
-                                </p>
-                                {% endif %}
-
-                            </div>
                         </div>
-                        <!-- <div class="col-3 d-flex justify-content-end align-items-center">
+                        <div class="line-dt"></div>
+
+                        <div class="row no-gutters">
+                            <div class="col">
+                                <div class="dt-content">
+                                    <h1 class="mb-0">
+                                        Pembayaran Via :
+                                    </h1>
+                                    {% if bank.nama_bank == '0' %}
+                                    <p class="mb-0 mt-2" id="pembayaran2">
+                                        BCA : {{ bank.no_rekening }}
+                                    </p>
+                                    {% elif bank.nama_bank == '1' %}
+                                    <p class="mb-0 mt-2" id="pembayaran2">
+                                        Mandiri : {{ bank.no_rekening }}
+                                    </p>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                            <!-- <div class="col-3 d-flex justify-content-end align-items-center">
                             <button data-toggle="modal" data-target="#listBank" type="button" class="btn btn-dt-ubah">
                                 Ubah
                             </button>
                         </div> -->
-                    </div>
-                    <div class="line-dt"></div>
-
-                    <div class="row no-gutters mt-3">
-                        <div class="col">
-                            <div class="dt-content">
-                                <h1 class="mb-0">
-                                    Metode Pengiriman :
-                                </h1>
-                                <p class="mb-0" id="pengiriman2">
-                                    Isi Terlebih Dahulu
-
-                                </p>
-                            </div>
                         </div>
+                        <div class="line-dt"></div>
 
-                        <!-- <div class="col-3 d-flex justify-content-end align-items-center">
+                        <div class="row no-gutters mt-3">
+                            <div class="col">
+                                <div class="dt-content">
+                                    <h1 class="mb-0">
+                                        Metode Pengiriman :
+                                    </h1>
+                                    <p class="mb-0" id="pengiriman2">
+                                        Isi Terlebih Dahulu
+
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- <div class="col-3 d-flex justify-content-end align-items-center">
                             <button data-toggle="modal" data-target="#listKurir" type="button" class="btn btn-dt-ubah">
                                 Ubah
                             </button>
                         </div> -->
-                    </div>
-                    <div class="line-dt"></div>
-                    <div class="box-total-dt animate__animated animate__fadeInUp duration-5">
-                        <div class="box-total-dt-main">
-                            <input type="hidden" class="total2" id="">
-                            <h1>
-                                Total
-                                <span class="float-right" id="totals">
-                                </span>
-                            </h1>
                         </div>
-                    </div>
-                    <div>
-                        <form action="{% url 'webcosmoappreseller:checkoutpost' %}" method="POST">
+                        <div class="line-dt"></div>
+                        <div class="box-total-dt animate__animated animate__fadeInUp duration-5">
+                            <div class="box-total-dt-main">
+                                <input type="hidden" class="total2" id="">
+                                <h1>
+                                    Total
+                                    <span class="float-right" id="totals">
+                                    </span>
+                                </h1>
+                            </div>
+                        </div>
+                        <div>
                             {% csrf_token %}
                             <input type="hidden" id="qty" name="qty" required>
-                            <input type="hidden" id="alamat" name="alamat" required>
-                            <input type="hidden" id="pembayaran" name="pembayaran" required>
-                            <input type="hidden" id="pengiriman" name="pengiriman" required>
                             <input type="hidden" name="ids" value="{{ produk.id }}" required>
                             <button type="submit" class="btn btn-block btn-dt-checkout">
                                 Checkout
                             </button>
-                        </form>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
     </div>
-
-    <!-- Modal List Alamat -->
-    <div class="modal fade" id="listAlamat" tabindex="-1" role="dialog" aria-labelledby="listAlamatLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="listAlamatLabel">List Alamat</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    {% for a in alamat %}
-                    <div class="card mt-2">
-                        <div class="card-body">
-                            <h5 class="label">{{ a.label }}</h5>
-                            <p class="mb-0">{{ reseller.nama_depan }} {{ reseller.nama_belakang }}
-                            </p>
-                            <span>{{ reseller.no_telp }}</span> <br>
-                            <span>{{ a.kotakab }}, {{ a.kecamatan }}, {{ a.kelurahan }} - {{ a.provinsi }}</span> <br>
-                            <span> {{ a.alamat_lengkap }} </span><br>
-                            <span> {{ a.kodepos }}</span>
-                            <div class="float-right">
-                                <button type="button" id="{{ a.id_alamat }}" class="btn btn-dt-ubah btnalamat">
-                                    Pilih Alamat
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                    <br>
-                </div>
-            </div>
-        </div>
     </div>
 
-
-
-    <!-- Modal List Kurir -->
-    <div class="modal fade" id="listKurir" tabindex="-1" role="dialog" aria-labelledby="listKurirLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="listKurirLabel">List Kurir</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    {% for k in kurir %}
-                    <div class="card mt-2">
-                        <div class="card-body">
-                            <h5 class="nama_kurir">{{ k.nama_kurir }}</h5>
-                            <p class="mb-0 font-weight-bold">{{ k.jenis_pengiriman }}</p>
-                            <p class="mb-0">Estimasi : {{ k.estimasi }} Hari</p>
-                            <p class="mb-0">Ongkir : Rp. {{ k.ongkir|intcomma }}</p>
-                            <input type="hidden" class="ongkir" value="{{ k.ongkir }}">
-                            <div class="float-right">
-                                <button type="button" id="{{ k.id_kurir }}" class="btn btn-dt-ubah btnkurir">
-                                    Pilih Kurir
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                    <br>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script src="{% static 'reseller/assets/js/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'reseller/assets/js/bootstrap.min.js' %}"></script>

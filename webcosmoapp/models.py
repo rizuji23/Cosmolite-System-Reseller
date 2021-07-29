@@ -348,6 +348,8 @@ class Pemesanan_EndUser(models.Model):
     alamat = models.CharField(max_length=100,  null=True)
     pembayaran = models.CharField(max_length=100,  null=True)
     pengiriman = models.CharField(max_length=100,  null=True)
+    dir_image = models.FileField(upload_to='buktipembayaranenduser', null=True)
+
 
     def __str__(self):
         return self.id_pemesanan_enduser

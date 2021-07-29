@@ -37,6 +37,10 @@ urlpatterns = [
         path('jualproduk/', viewsreseller.jualproduk, name="jualproduk"),
         path('sudahtiba/', viewsreseller.sudahtiba, name="sudahtiba"),
         path('share/<str:id_produk_r>/', viewsreseller.share, name="share"),
-        path('buyuser/<str:id_produk>/<str:id_produk_r>/', viewsreseller.buyuser, name="buyuser")
+        path('buyuser/<str:id_produk>/<str:id_produk_r>/', viewsreseller.buyuser, name="buyuser"),
+        path('checkoutenduser/', viewsreseller.checkoutenduser, name="checkoutenduser"),
+        path('checkoutendusers/<str:id_pemesanan_enduser>/', viewsreseller.checkoutendusers, name="checkoutendusers"),
+        path('bayarenduser/', viewsreseller.bayarenduser, name="bayarenduser"),
+        path('doneenduser/', viewsreseller.doneenduser, name="doneenduser")
 
 ]

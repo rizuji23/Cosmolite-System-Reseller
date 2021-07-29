@@ -644,4 +644,79 @@ def buyuser(request, id_produk, id_produk_r):
     kurir = Kurir.objects.filter(status='1')
     bank = Account_Bank.objects.get(id_user=produk.id_reseller.id_reseller)
     return render(request, 'reseller/detail-transaksi-user.html', {'produk': produk, 'bank':bank})
-    
+
+def checkoutenduser(request):
+    if request.method == 'POST':
+        qty = request.POST['qty']
+        alamat = request.POST['alamat_enduser']
+        id_produk = request.POST['ids']
+        nama_enduser = request.POST['nama_enduser']
+
+        produk = Produk_Reseller.objects.get(id = id_produk)
+
+        id_pemesanan_enduser = uuid.uuid4().hex[:6].upper()
+        id_enduser = uuid.uuid4().hex[:6].upper()
+
+        if qty < '1':
+            messages.add_message(request, messages.ERROR, 'Qty Tidak Sesuai...')
+            return HttpResponseRedirect(reverse('webcosmoappreseller:login'))
+        else:
+            total = int(produk.id_produk.harga_produk) * int(qty)
+            invoice = "COBADULUENDUSER"
+            tanggal = datetime.datetime.now()
+            request.session['checkout_session'] = id_pemesanan_enduser
+            pemesanan = Pemesanan_EndUser(id_pemesanan_enduser=id_pemesanan_enduser, id_enduser=id_enduser, invoice=invoice, qty=qty, subtotal=total, status='1', tanggal=tanggal, tanggal_update=tanggal, id_produk_id=produk.id_produk.id, id_reseller_id=produk.id_reseller.id, alamat=alamat, nama_enduser=nama_enduser)
+
+            if pemesanan:
+                pemesanan.save()
+                return HttpResponseRedirect(reverse('webcosmoappreseller:checkoutendusers', kwargs={'id_pemesanan_enduser':id_pemesanan_enduser}))
+            else:
+                messages.add_message(request, messages.ERROR, 'Gagal Membeli Barang')
+                return HttpResponseRedirect(reverse('webcosmoappreseller:login'))
+
+    else:
+        messages.add_message(request, messages.ERROR, '403 forhibidden')
+        return HttpResponseRedirect(reverse('webcosmoappreseller:login'))
+
+def checkoutendusers(request, id_pemesanan_enduser):
+    if request.session.has_key('checkout_session'):
+        pemesanan = Pemesanan_EndUser.objects.get(id_pemesanan_enduser=id_pemesanan_enduser)
+        produk = Produk_Reseller.objects.get(id_reseller_id=pemesanan.id_reseller_id)
+        user = Reseller.objects.get(id=pemesanan.id_reseller_id)
+        bank = Account_Bank.objects.get(id_user=pemesanan.id_reseller.id_reseller)
+
+        return render(request, 'reseller/checkoutenduser.html', {'pemesanan':pemesanan, 'reseller':user, 'bank':bank, 'produk':produk})
+    else:
+        del request.session['checkout_session']
+        return HttpResponseRedirect(reverse('webcosmoappreseller:dashboard'))
+
+def bayarenduser(request):
+    if request.method == 'POST':
+        if request.session.has_key('checkout_session'):
+            harga_total = request.POST['harga_total']
+            ids = request.POST['ids']
+            tanggal = datetime.datetime.now()
+
+            buktitransfer = request.FILES['buktitransfer']
+
+            pemesanan = Pemesanan_EndUser.objects.get(id_pemesanan_enduser=ids)
+
+            if pemesanan:
+                pemesanan.dir_image = buktitransfer
+                pemesanan.tanggal_update = tanggal
+                pemesanan.status = '2'
+                pemesanan.save()
+                return HttpResponseRedirect(reverse('webcosmoappreseller:doneenduser'))
+
+
+        else:
+            del request.session['checkout_session']
+            return HttpResponseRedirect(reverse('webcosmoappreseller:dashboard'))
+    else:
+        del request.session['checkout_session']
+        messages.add_message(request, messages.ERROR, '403 forhibidden')
+        return HttpResponseRedirect(reverse('webcosmoappreseller:dashboard'))
+
+def doneenduser(request):
+    return render(request, 'reseller/doneenduser.html')
+   

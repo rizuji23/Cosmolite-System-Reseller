@@ -293,6 +293,29 @@ $(document).ready(function () {
 
 	});
 
+
+	$('.btnminus2').click(function () {
+		var $input = $('.qtys').val();
+		var count = parseInt($('.qtys').val()) - 1;
+		count = count < 1 ? 1 : count;
+		$('.qtys').val(count);
+		$('.qtys').change();
+		$('#qty').val(count);
+		$('#qty').change();
+		hitungtotal(count)
+		return false;
+	});
+	$('.btnplus2').click(function () {
+		var $input = $('.qtys').val();
+		$('.qtys').val(parseInt($('.qtys').val()) + 1);
+		$('#qty').val(parseInt($('.qtys').val()) + 1);
+		$('#qty').change();
+		$('.qtys').change();
+		hitungtotal(parseInt($('.qtys').val()) + 1)
+		return false;
+
+	});
+
 	function hitungtotal(count) {
 		var harga = $("#harga_produks").val()
 		var qty = count
@@ -302,6 +325,7 @@ $(document).ready(function () {
 		var total3 = $('.total2').val(total)
 		$('.total2').val(total)
 		$('#totals').text("Rp " + total2)
+		console.log('data' + total2)
 
 	}
 

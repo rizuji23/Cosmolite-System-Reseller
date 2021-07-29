@@ -344,6 +344,10 @@ class Pemesanan_EndUser(models.Model):
     status = models.CharField(max_length=2)
     tanggal = models.DateTimeField()
     tanggal_update = models.DateTimeField()
+    nama_enduser = models.CharField(max_length=100, null=True)
+    alamat = models.CharField(max_length=100,  null=True)
+    pembayaran = models.CharField(max_length=100,  null=True)
+    pengiriman = models.CharField(max_length=100,  null=True)
 
     def __str__(self):
         return self.id_pemesanan_enduser

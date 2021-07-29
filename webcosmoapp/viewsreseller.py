@@ -629,3 +629,19 @@ def sudahtiba(request):
     else:
         messages.add_message(request, messages.ERROR, '403 forhibidden')
         return HttpResponseRedirect(reverse('webcosmoappreseller:dashboard'))
+
+
+def share(request, id_produk_r):
+    produk = Produk_Reseller.objects.get(id_produk_reseller=id_produk_r)
+    foto = Foto_Produk.objects.filter(id_produk_id=produk.id_produk_id)
+    detailproduk = Detail_Produk.objects.get(id_produk_id=produk.id_produk_id)
+    return render(request, 'reseller/detail-share.html', {'produk':produk, 'foto':foto, 'detailproduk':detailproduk})
+
+
+def buyuser(request, id_produk, id_produk_r):
+    pro = Produk.objects.get(id_produk=id_produk)
+    produk = Produk_Reseller.objects.get(id_produk_reseller=id_produk_r )
+    kurir = Kurir.objects.filter(status='1')
+    bank = Account_Bank.objects.get(id_user=produk.id_reseller.id_reseller)
+    return render(request, 'reseller/detail-transaksi-user.html', {'produk': produk, 'bank':bank})
+    

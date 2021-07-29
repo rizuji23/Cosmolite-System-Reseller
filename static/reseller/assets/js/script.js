@@ -202,6 +202,14 @@ $(document).ready(function () {
 		})
 	})
 
+	$('.btnshare').click(function () {
+		ids = $(this).attr('id')
+		data = "http://localhost:8000/share/" + ids
+		$('.links').text(data)
+
+		$('#sharelink').modal('show')
+	})
+
 })
 
 $('#tambahalamat').click(function () {

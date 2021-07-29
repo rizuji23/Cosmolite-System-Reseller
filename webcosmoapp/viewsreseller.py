@@ -357,8 +357,10 @@ def statistik(request):
     if request.session.has_key("username_reseller"):
         username = request.session['username_reseller']
         users = get_object_or_404(Reseller, username=username)
-        produk = Produk.objects.all()
-        return render(request, 'reseller/statistik.html', {'reseller': users, 'produk':produk})
+        pemesanan = Pemesanan_EndUser.objects.filter(id_reseller_id=users.id)
+        produk = Produk_Reseller.objects.get(id_reseller_id=users.id)
+        detailproduk = Detail_Produk.objects.get(id_produk_id=produk.id_produk_id)
+        return render(request, 'reseller/statistik.html', {'reseller': users, 'pemesanan':pemesanan, 'produk':produk, 'detailproduk':detailproduk})
     else:
         if request.session.has_key("username_reseller"):
             del request.session['username_reseller']
@@ -706,6 +708,12 @@ def bayarenduser(request):
                 pemesanan.tanggal_update = tanggal
                 pemesanan.status = '2'
                 pemesanan.save()
+                produk = Produk_Reseller.objects.get(id_reseller_id=pemesanan.id_reseller_id)
+                id_komisi = uuid.uuid4().hex[:6].upper()
+                komisi = Komisi(id_komisi=id_komisi, komisi=produk.harga_komisi, tanggal=tanggal, tanggal_update=tanggal, id_reseller_id=pemesanan.id_reseller_id)
+
+                komisi.save()
+
                 return HttpResponseRedirect(reverse('webcosmoappreseller:doneenduser'))
 
 

@@ -1,4 +1,5 @@
 {% load static %}
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -220,7 +221,7 @@
                         <h1>
                             Riwayat Penjualan
                         </h1>
-                        <div class="riwayat-penjualan-status">
+                        <!-- <div class="riwayat-penjualan-status">
                             <ul>
                                 <li class="ml-0">
                                     <a href="#" class="btn active">
@@ -238,122 +239,46 @@
                                     </a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="riwayat-body">
+                        {% for peme in pemesanan %}
                         <div class="card-pesanan">
                             <div class="row no-gutters">
                                 <div class="col col-lg-3">
-                                    <img src="{% static 'reseller/assets/img/user.jpg' %}" alt=""
+                                    <img src="{{ detailproduk.thumb_image.url }}" alt=""
                                         class="img-card-pesanan img-fluid">
                                 </div>
                                 <div class="col col-lg ml-3 d-flex flex-column align-items-start">
                                     <h1>
-                                        Nama Pesanan
+                                        {{ peme.id_produk.nama_produk }}
                                     </h1>
                                     <p>
-                                        Lorem Ipsum dorLorem Ipsum dorLorem
-                                        Ipsum dorLorem Ipsum dorLorem Ipsum
-                                        dorLorem Ipsum dorLorem Ipsum
-                                        dorLoremLorem Ipsum...
+                                        Nama Enduser: {{ peme.nama_enduser }} <br>
+                                        Alamat : {{ peme.alamat }} <br>
+                                        Qty: {{ peme.qty }} <br>
+                                        Total : Rp. {{ peme.subtotal|add:produk.harga_komisi|intcomma }}
+
                                     </p>
                                     <div class="flex-grow-1 d-flex justify-content-end">
+                                        {% if peme.status == '1' %}
                                         <a href="#" class="btn btn-pesanan">
-                                            Pesanan
+                                            Menunggu Pembayaran
                                         </a>
+                                        {% elif peme.status == '2' %}
+                                        <a href="#" class="btn btn-pesanan">
+                                            Pembayaran Selesai
+                                        </a>
+                                        {% endif %}
+
                                     </div>
                                 </div>
                             </div>
                             <p class="pesanan-date text-right">
-                                Dec 10, 2020 <strong> 07.00AM</strong>
+                                {{ peme.tanggal_update }}
                             </p>
                         </div>
-
-
-                        <div class="card-pesanan">
-                            <div class="row no-gutters">
-                                <div class="col col-lg-3">
-                                    <img src="{% static 'reseller/assets/img/user.jpg' %}" alt=""
-                                        class="img-card-pesanan img-fluid">
-                                </div>
-                                <div class="col col-lg ml-3 d-flex flex-column align-items-start">
-                                    <h1>
-                                        Nama Pesanan
-                                    </h1>
-                                    <p>
-                                        Lorem Ipsum dorLorem Ipsum dorLorem
-                                        Ipsum dorLorem Ipsum dorLorem Ipsum
-                                        dorLorem Ipsum dorLorem Ipsum
-                                        dorLoremLorem Ipsum...
-                                    </p>
-                                    <div class="flex-grow-1 d-flex justify-content-end">
-                                        <a href="#" class="btn btn-pesanan">
-                                            Pesanan
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="pesanan-date text-right">
-                                Dec 10, 2020 <strong> 07.00AM</strong>
-                            </p>
-                        </div>
-
-
-                        <div class="card-pesanan">
-                            <div class="row no-gutters">
-                                <div class="col col-lg-3">
-                                    <img src="{% static 'reseller/assets/img/user.jpg' %}" alt=""
-                                        class="img-card-pesanan img-fluid">
-                                </div>
-                                <div class="col col-lg ml-3 d-flex flex-column align-items-start">
-                                    <h1>
-                                        Nama Pesanan
-                                    </h1>
-                                    <p>
-                                        Lorem Ipsum dorLorem Ipsum dorLorem
-                                        Ipsum dorLorem Ipsum dorLorem Ipsum
-                                        dorLorem Ipsum dorLorem Ipsum
-                                        dorLoremLorem Ipsum...
-                                    </p>
-                                    <div class="flex-grow-1 d-flex justify-content-end">
-                                        <a href="#" class="btn btn-pesanan">
-                                            Pesanan
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="pesanan-date text-right">
-                                Dec 10, 2020 <strong> 07.00AM</strong>
-                            </p>
-                        </div>
-
-                        <div class="card-pesanan">
-                            <div class="row no-gutters">
-                                <div class="col col-lg-3">
-                                    <img src="{% static 'reseller/assets/img/user.jpg' %}" alt=""
-                                        class="img-card-pesanan img-fluid">
-                                </div>
-                                <div class="col col-lg ml-3 d-flex flex-column align-items-start">
-                                    <h1>
-                                        Nama Pesanan
-                                    </h1>
-                                    <p>
-                                        Lorem Ipsum dorLorem Ipsum dorLorem
-                                        Ipsum dorLorem Ipsum dorLorem Ipsum
-                                        dorLorem Ipsum dorLorem Ipsum
-                                        dorLoremLorem Ipsum...
-                                    </p>
-                                    <div class="flex-grow-1 d-flex justify-content-end">
-                                        <a href="#" class="btn btn-pesanan">
-                                            Pesanan
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="pesanan-date text-right">
-                                Dec 10, 2020 <strong> 07.00AM</strong>
-                            </p>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
